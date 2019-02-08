@@ -1,7 +1,7 @@
 
 class Car < ApplicationRecord
 
-  has_many :listings
+  belongs_to :listing
   has_many :users, through: :listings
 
 end

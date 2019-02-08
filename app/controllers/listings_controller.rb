@@ -12,13 +12,17 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @listing.car = Car.new
+    # byebug
   end
 
   def create
-    @listing = Listing.new(listing_params)
+    # byebug
+    @car = Car.create(make: params[:listing][:car][:make], model: params[:listing][:car][:model], color: params[:listing][:car][:color], year: params[:listing][:car][:year], mileage: params[:listing][:car][:mileage])
+    @listing = Listing.new(title: params[:listing][:title], description: params[:listing][:description], user_id: params[:listing][:user_id])
 
-      if @user.save
-        redirect_to @user
+      if @listing.save
+        redirect_to @listing
       else
         render :new
       end
@@ -29,10 +33,10 @@ class ListingsController < ApplicationController
 
   def update
 
-    @user.update(user_params)
+    @listing.update(listing_params)
 
-    if @user.save
-      redirect_to @user
+    if @listing.save
+      redirect_to @listing
     else
       render :edit
     end
@@ -50,7 +54,8 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:user_id, :car_id, :description, :title)
+    params.require(:listing).permit(:user_id, :description, :title, car_attributes: [:make,
+                                      :model, :color, :year, :mileage])
   end
 
 end

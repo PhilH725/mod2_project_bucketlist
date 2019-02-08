@@ -1,0 +1,8 @@
+<h1>User page:</h1>
+<h4>User: <%= @user.username %></h4>
+
+<%= form_tag user_path(@user), method:"DELETE" do %>
+<%= submit_tag "Delete User" %>
+<% end %>
+
+<h4><%= link_to "User Index", users_path %></h4>

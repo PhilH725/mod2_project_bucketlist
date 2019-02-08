@@ -12,15 +12,14 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    byebug
-    @car = @listing.car.build
+    @listing.car = Car.new
     # byebug
   end
 
   def create
     # byebug
-    @car = Car.create(make: params[:listing][:cars][:make], model: params[:listing][:cars][:model], color: params[:listing][:cars][:color], year: params[:listing][:cars][:year], mileage: params[:listing][:cars][:mileage])
-    @listing = Listing.new(listing_params)
+    @car = Car.create(make: params[:listing][:car][:make], model: params[:listing][:car][:model], color: params[:listing][:car][:color], year: params[:listing][:car][:year], mileage: params[:listing][:car][:mileage])
+    @listing = Listing.new(title: params[:listing][:title], description: params[:listing][:description], user_id: params[:listing][:user_id])
 
       if @listing.save
         redirect_to @listing

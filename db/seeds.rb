@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Car.destroy_all
+Listing.destroy_all
+
+phil = User.create(username: "Phil", password: 'p')
+kyle = User.create(username: "Kyle", password: 'k')
+
+a = Car.create(make: "Toyota", model: "Camry", color: "Gold", year: 2002, mileage: 5000)
+b = Car.create(make: "Ford", model: "F-150", color: "Blue", year: 2012, mileage: 105000)
+
+Listing.create(title: "Barely used Camry for sale!!!", description: "legit, only 5k miles", user_id: kyle.id, car_id: a.id)
+Listing.create(title: "Buy a truck", description: "Good work truck", user_id: phil.id, car_id: b.id)

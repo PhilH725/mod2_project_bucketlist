@@ -1,5 +1,4 @@
 
-
 <% if @listing.errors.any? %>
   <div id= "error_explanation">
     <h2>There were some errors:</h2>
@@ -16,6 +15,8 @@
   <%= f.text_field :title %><br>
   <%= f.label :description %><br>
   <%= f.text_area :description %><br>
+  <%= f.label :price %><br>
+  <%= f.number_field :price %><br>
   <%= f.label :car_info %><br><br>
   <%= f.fields_for :car do |c| %>
     <%= c.label :make %><br>
@@ -28,9 +29,8 @@
     <%= c.number_field :year %><br>
     <%= c.label :mileage %><br>
     <%= c.number_field :mileage %><br>
-    <% end %>
-    <br><br>
-    <%= f.label :user_id %>
+  <% end %><br><br>
+  <%= f.label :user_id %>
   <%= f.collection_select :user_id, User.all, :id, :username, prompt:true %><br><br>
   <%= f.submit %>
 <% end %>

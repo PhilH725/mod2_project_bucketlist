@@ -1,0 +1,14 @@
+
+to do:
+
+-users log on page
+  -remove collection_select on listing, replace with logged on user
+
+-finish listing view pages
+
+-users /show
+  -show (my) listings
+  -create new listing
+  -history
+
+-figure out faker

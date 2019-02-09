@@ -1,13 +1,14 @@
 
 class ListingsController < ApplicationController
 
-  before_action :find_params, only: [:edit, :show, :update, :destroy]
+  before_action :get_listing, only: [:edit, :show, :update, :destroy]
 
   def index
     @listings = Listing.all
   end
 
   def show
+    @car = Car.find_by(listing_id: @listing.id)
   end
 
   def new
@@ -18,14 +19,23 @@ class ListingsController < ApplicationController
 
   def create
     # byebug
-    @car = Car.create(make: params[:listing][:car][:make], model: params[:listing][:car][:model], color: params[:listing][:car][:color], year: params[:listing][:car][:year], mileage: params[:listing][:car][:mileage])
-    @listing = Listing.new(title: params[:listing][:title], description: params[:listing][:description], user_id: params[:listing][:user_id])
+    @listing = Listing.new(title: params[:listing][:title],
+                           description: params[:listing][:description],
+                           user_id: params[:listing][:user_id])
 
-      if @listing.save
-        redirect_to @listing
-      else
-        render :new
-      end
+    @car = Car.new(make: params[:listing][:car][:make],
+                      model: params[:listing][:car][:model],
+                      color: params[:listing][:car][:color],
+                      year: params[:listing][:car][:year],
+                      mileage: params[:listing][:car][:mileage],
+                      listing_id: @listing.id)
+
+    if @car.valid? && @listing.valid?
+      @listing.save
+      redirect_to @listing
+    else
+      render :new
+    end
   end
 
   def edit
@@ -49,7 +59,7 @@ class ListingsController < ApplicationController
 
   private
 
-  def find_params
+  def get_listing
     @listing = Listing.find(params[:id])
   end
 

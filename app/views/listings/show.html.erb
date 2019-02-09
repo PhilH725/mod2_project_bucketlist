@@ -1,6 +1,18 @@
 
 <h1><%= @listing.title %></h1>
 
+<h3>Price: $<%= number_with_delimiter(@listing.price) %></h3>
+
 <p><%= @listing.description %></p>
+
+<h3>Car information:</h3>
+
+<ul>
+  <li>Make: <%= @car.make %></li><br>
+  <li>Model: <%= @car.model %></li><br>
+  <li>Color: <%= @car.color %></li><br>
+  <li>Year: <%= @car.year %></li><br>
+  <li>Mileage: <%= @car.mileage %></li><br>
+</ul><br>
 
 <p>Seller: <%= link_to @listing.user.username, @listing.user %></p>

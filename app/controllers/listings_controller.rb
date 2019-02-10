@@ -1,6 +1,8 @@
 
 class ListingsController < ApplicationController
 
+  layout 'bucketlist'
+
   before_action :get_listing, only: [:edit, :show, :update, :destroy]
 
   def index
@@ -24,11 +26,11 @@ class ListingsController < ApplicationController
                            user_id: params[:listing][:user_id])
 
     @car = Car.new(make: params[:listing][:car][:make],
-                      model: params[:listing][:car][:model],
-                      color: params[:listing][:car][:color],
-                      year: params[:listing][:car][:year],
-                      mileage: params[:listing][:car][:mileage],
-                      listing_id: @listing.id)
+                   model: params[:listing][:car][:model],
+                   color: params[:listing][:car][:color],
+                   year: params[:listing][:car][:year],
+                   mileage: params[:listing][:car][:mileage],
+                   listing_id: @listing.id)
 
     if @car.valid? && @listing.valid?
       @listing.save
@@ -64,8 +66,10 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:user_id, :description, :title, car_attributes: [:make,
-                                      :model, :color, :year, :mileage])
+    params.require(:listing).permit(:user_id,
+                                    :description,
+                                    :title,
+                                    car_attributes: [:make, :model, :color, :year, :mileage])
   end
 
 end

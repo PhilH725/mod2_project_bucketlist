@@ -8,14 +8,13 @@
 
 User.destroy_all
 Car.destroy_all
-Listing.destroy_all
+Auction.destroy_all
 
 phil = User.create(username: "Phil", password: 'p')
 kyle = User.create(username: "Kyle", password: 'k')
 
-list1 = Listing.create(title: "Barely used Camry for sale!!!", description: "legit, only 5k miles", price: 14000, user_id: kyle.id)
-list2 = Listing.create(title: "Buy a truck", description: "Good work truck", price: 8000, user_id: phil.id)
+a = Car.create(make: "Toyota", model: "Camry", color: "Gold", year: 2002, mileage: 5000, user_id: kyle.id)
+b = Car.create(make: "Ford", model: "F-150", color: "Blue", year: 2012, mileage: 105000, user_id: phil.id)
 
-
-a = Car.create(make: "Toyota", model: "Camry", color: "Gold", year: 2002, mileage: 5000, listing_id: list1.id)
-b = Car.create(make: "Ford", model: "F-150", color: "Blue", year: 2012, mileage: 105000, listing_id: list2.id)
+list1 = Auction.create(title: "Barely used Camry for sale!!!", description: "legit, only 5k miles", starting_bid: 14000, seller_id: kyle.id, car_id: a.id)
+list2 = Auction.create(title: "Buy a truck", description: "Good work truck", starting_bid: 8000, seller_id: phil.id, car_id: b.id)

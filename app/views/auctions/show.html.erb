@@ -1,9 +1,9 @@
 
-<h1><%= @listing.title %></h1>
+<h1><%= @auction.title %></h1>
 
-<h3>Price: $<%= number_with_delimiter(@listing.price) %></h3>
+<h3>Price: $<%= number_with_delimiter(@auction.starting_bid) %></h3>
 
-<p><%= @listing.description %></p>
+<p><%= @auction.description %></p>
 
 <h3>Car information:</h3>
 
@@ -15,4 +15,4 @@
   <li>Mileage: <%= @car.mileage %></li><br>
 </ul><br>
 
-<p>Seller: <%= link_to @listing.user.username, @listing.user %></p>
+<p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>

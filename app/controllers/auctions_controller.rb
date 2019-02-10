@@ -1,21 +1,21 @@
 
-class ListingsController < ApplicationController
+class AuctionsController < ApplicationController
 
   layout 'bucketlist'
 
-  before_action :get_listing, only: [:edit, :show, :update, :destroy]
+  before_action :get_auction, only: [:edit, :show, :update, :destroy]
 
   def index
-    @listings = Listing.all
+    @auctions = Auction.all
   end
 
   def show
-    @car = Car.find_by(listing_id: @listing.id)
+    @car = Car.find(@auction.car_id)
   end
 
   def new
-    @listing = Listing.new
-    @listing.car = Car.new
+    @auction = Auction.new
+    # @listing.car = Car.new
     # byebug
   end
 
@@ -61,15 +61,12 @@ class ListingsController < ApplicationController
 
   private
 
-  def get_listing
-    @listing = Listing.find(params[:id])
+  def get_auction
+    @auction = Auction.find(params[:id])
   end
 
-  def listing_params
-    params.require(:listing).permit(:user_id,
-                                    :description,
-                                    :title,
-                                    car_attributes: [:make, :model, :color, :year, :mileage])
+  def auction_params
+    params.require(:auction).permit(:user_id, :description, :title, :car_id, :starting_bid)
   end
 
 end

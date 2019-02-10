@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+ #site_header {
+     color: blue;
+ }

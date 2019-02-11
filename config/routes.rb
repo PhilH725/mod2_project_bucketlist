@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   resources :auctions
   resources :cars, only: [:new, :create]
   resources :users
+  resources :bids
 
-  root 'application#hello'
+  # root '/login'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  get '/logout' => 'application#logout'
+  get '/verify' => 'application#verify'
   post '/logout' => 'sessions#destroy'
 
   get '/users/:id/cars' => 'users#cars', as: 'user_cars'

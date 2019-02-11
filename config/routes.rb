@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :auctions
-  #resources :cars
+  resources :cars, only: [:new, :create]
   resources :users
 
   root 'application#hello'

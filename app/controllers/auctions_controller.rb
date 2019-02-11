@@ -1,17 +1,23 @@
 
 class AuctionsController < ApplicationController
 
-  layout 'bucketlist'
+  layout 'bucketlist_nonuser'
 
   before_action :get_auction, only: [:edit, :show, :update, :destroy]
+  before_action :require_login, only: [:new]
 
   def index
     @auctions = Auction.all
-    # byebug
+    if User.find_by(username: session[:username])
+      render :layout => 'bucketlist_user'
+    end
   end
 
   def show
     @car = Car.find(@auction.car_id)
+    if User.find_by(username: session[:username])
+      render :layout => 'bucketlist_user'
+    end
   end
 
   def new
@@ -20,11 +26,9 @@ class AuctionsController < ApplicationController
     else
       redirect_to controller: 'sessions', action: 'new'
     end
-    # byebug
   end
 
   def create
-    # byebug
     @auction = Auction.new(title: params[:auction][:title],
                            description: params[:auction][:description],
                            starting_bid: params[:auction][:starting_bid],
@@ -65,6 +69,10 @@ class AuctionsController < ApplicationController
 
   def auction_params
     params.require(:auction).permit(:user_id, :description, :title, :car_id, :starting_bid)
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :username
   end
 
 end

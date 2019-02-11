@@ -17,7 +17,7 @@
   <%= f.text_area :description %><br>
   <%= f.label :starting_bid %><br>
   <%= f.number_field :starting_bid %><br><br>
-  <%= f.label :select_car %> 
-  <%= f.collection_select :car_id, @user.cars, :id, :model, prompt:true %><br><br>
+  <%= f.label :select_car %>
+  <%= f.collection_select :car_id, @user.cars, :id, :display, prompt:true %><br><br>
   <%= f.submit %>
 <% end %>

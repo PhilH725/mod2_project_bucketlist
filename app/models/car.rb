@@ -5,4 +5,8 @@ class Car < ApplicationRecord
 
   has_many :auctions
 
+  def display
+    "#{self.make} - #{self.model}"
+  end
+
 end

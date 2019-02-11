@@ -14,7 +14,7 @@ class AuctionsController < ApplicationController
   end
 
   def show
-    cookies["view_auction"] = @auction
+    cookies[:view_auction] = @auction.id
     @car = Car.find(@auction.car_id)
     if User.find_by(username: session[:username])
       render :layout => 'bucketlist_user'

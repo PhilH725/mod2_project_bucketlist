@@ -1,2 +1,12 @@
 
-<h1>new bid</h1>
+<h1><%= @auction.title %></h1>
+
+Current top bid: <%= @auction.starting_bid %><br>
+
+<%= form_for @bid do |f| %>
+  <%= f.label :amount %>
+  <%= f.number_field :amount %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.hidden_field :auction_id, :value => @auction.id %>
+  <%= f.submit "Place Bet!" %>
+<% end %>

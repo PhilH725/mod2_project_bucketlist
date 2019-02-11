@@ -3,13 +3,17 @@ class UsersController < ApplicationController
 
   layout 'bucketlist'
 
-  before_action :find_params, only: [:show, :destroy]
+  before_action :find_params, only: [:show, :destroy, :cars]
 
   def index
     @users = User.all
   end
 
   def show
+    #byebug
+  end
+
+  def cars
   end
 
   def new

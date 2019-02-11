@@ -7,7 +7,7 @@ class AuctionsController < ApplicationController
 
   def index
     @auctions = Auction.all
-    byebug
+    #byebug
   end
 
   def show

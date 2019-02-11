@@ -1,6 +1,8 @@
 
 class UsersController < ApplicationController
 
+  layout 'bucketlist'
+
   before_action :find_params, only: [:show, :destroy]
 
   def index

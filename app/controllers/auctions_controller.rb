@@ -14,6 +14,7 @@ class AuctionsController < ApplicationController
   end
 
   def show
+    cookies["view_auction"] = @auction
     @car = Car.find(@auction.car_id)
     if User.find_by(username: session[:username])
       render :layout => 'bucketlist_user'
@@ -23,6 +24,7 @@ class AuctionsController < ApplicationController
   def new
     if @user = User.find_by(username: session[:username])
       @auction = Auction.new
+      render :layout => 'bucketlist_user'
     else
       redirect_to controller: 'sessions', action: 'new'
     end
@@ -36,6 +38,7 @@ class AuctionsController < ApplicationController
                            seller_id: User.find_by(username: session[:username]).id)
 
     if @auction.save
+      @car.active_auction = true
       redirect_to @auction
     else
       render :new
@@ -43,6 +46,9 @@ class AuctionsController < ApplicationController
   end
 
   def edit
+    if @user = User.find_by(username: session[:username])
+      render :layout => 'bucketlist_user'
+    end
   end
 
   def update

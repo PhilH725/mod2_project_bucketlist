@@ -18,6 +18,6 @@
   <%= f.label :starting_bid %><br>
   <%= f.number_field :starting_bid %><br><br>
   <%= f.label :select_car %>
-  <%= f.collection_select :car_id, @user.cars, :id, :display, prompt:true %><br><br>
+  <%= f.collection_select :car_id, @user.available_cars, :id, :display, prompt:true %><br><br>
   <%= f.submit %>
 <% end %>

@@ -1,7 +1,7 @@
 
 <h1><%= @auction.title %></h1>
 
-<h3>Price: $<%= number_with_delimiter(@auction.starting_bid) %></h3>
+<h3>Starting Bid: $<%= number_with_delimiter(@auction.starting_bid) %></h3>
 
 <p><%= @auction.description %></p>
 
@@ -13,7 +13,9 @@
   <li>Color: <%= @car.color %></li><br>
   <li>Year: <%= @car.year %></li><br>
   <li>Mileage: <%= number_with_delimiter(@car.mileage) %></li><br>
-</ul><br>
+</ul>
+
+<h4><%= link_to "Place Bid", new_bid_path %></h4>
 
 <p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>
 

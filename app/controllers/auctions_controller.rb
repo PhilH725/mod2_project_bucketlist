@@ -1,41 +1,46 @@
 
 class AuctionsController < ApplicationController
 
-  layout 'bucketlist'
+  layout 'bucketlist_nonuser'
 
   before_action :get_auction, only: [:edit, :show, :update, :destroy]
+  before_action :require_login, only: [:new]
 
   def index
     @auctions = Auction.all
+<<<<<<< HEAD
     #byebug
+=======
+    if User.find_by(username: session[:username])
+      render :layout => 'bucketlist_user'
+    end
+>>>>>>> 0606eeaacc58f6a370b686183a440e93423f0b04
   end
 
   def show
     @car = Car.find(@auction.car_id)
+    if User.find_by(username: session[:username])
+      render :layout => 'bucketlist_user'
+    end
   end
 
   def new
-    @auction = Auction.new
-    # @listing.car = Car.new
-    # byebug
+    if @user = User.find_by(username: session[:username])
+      @auction = Auction.new
+    else
+      redirect_to controller: 'sessions', action: 'new'
+    end
   end
 
   def create
-    # byebug
-    @listing = Listing.new(title: params[:listing][:title],
-                           description: params[:listing][:description],
-                           user_id: params[:listing][:user_id])
+    @auction = Auction.new(title: params[:auction][:title],
+                           description: params[:auction][:description],
+                           starting_bid: params[:auction][:starting_bid],
+                           car_id: params[:auction][:car_id],
+                           seller_id: User.find_by(username: session[:username]).id)
 
-    @car = Car.new(make: params[:listing][:car][:make],
-                   model: params[:listing][:car][:model],
-                   color: params[:listing][:car][:color],
-                   year: params[:listing][:car][:year],
-                   mileage: params[:listing][:car][:mileage],
-                   listing_id: @listing.id)
-
-    if @car.valid? && @listing.valid?
-      @listing.save
-      redirect_to @listing
+    if @auction.save
+      redirect_to @auction
     else
       render :new
     end
@@ -46,18 +51,18 @@ class AuctionsController < ApplicationController
 
   def update
 
-    @listing.update(listing_params)
+    @auction.update(auction_params)
 
-    if @listing.save
-      redirect_to @listing
+    if @auction.save
+      redirect_to @auction
     else
       render :edit
     end
   end
 
   def destroy
-    @listing.destroy
-    redirect_to listings_path
+    @auction.destroy
+    redirect_to auctions_path
   end
 
   private
@@ -68,6 +73,10 @@ class AuctionsController < ApplicationController
 
   def auction_params
     params.require(:auction).permit(:user_id, :description, :title, :car_id, :starting_bid)
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :username
   end
 
 end

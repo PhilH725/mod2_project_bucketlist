@@ -5,6 +5,6 @@ class Auction < ApplicationRecord
   belongs_to :car
 
   has_many :bids
-  has_many :buyers, through: :bids, class_name: "User"
+  has_many :buyers, through: :bids, class_name: "User", as: :buyer_auctions
 
 end

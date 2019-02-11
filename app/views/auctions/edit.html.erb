@@ -1,14 +1,20 @@
 
 <h2>Editing auction:</h2>
 
-<%= form_for @listing do |f| %>
+<%= form_for @auction do |f| %>
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>
   <%= f.label :description %><br>
   <%= f.text_area :description %><br>
+  <%= f.label :starting_bid %>
+  <%= f.number_field :starting_bid %>
   <%= f.submit %>
 <% end %>
 
-<h3>Edit vehicle information:</h3>
+<p>Vehicle information can not be modified during an auction.</p>
 
-#tbd
+<p>Remove auction? (option unavailable if bids have been made)</p>
+
+<%= form_tag @auction, method: "delete" do %>
+  <%= submit_tag "remove auction" %>
+<% end %>

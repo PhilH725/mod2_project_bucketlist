@@ -1,7 +1,7 @@
 
 class UsersController < ApplicationController
 
-  layout 'bucketlist'
+  layout 'bucketlist_user'
 
   before_action :find_params, only: [:show, :destroy, :cars]
 

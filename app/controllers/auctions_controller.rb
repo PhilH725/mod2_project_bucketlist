@@ -1,24 +1,24 @@
 
 class AuctionsController < ApplicationController
 
-  layout 'bucketlist_nonuser'
+  layout 'bucketlist_header'
 
   before_action :get_auction, only: [:edit, :show, :update, :destroy]
   before_action :require_login, only: [:new]
 
   def index
     @auctions = Auction.all
-    if User.find_by(username: session[:username])
-      render :layout => 'bucketlist_user'
-    end
+    # if User.find_by(username: session[:username])
+    #   render :layout => 'bucketlist_user'
+    # end
   end
 
   def show
     cookies["view_auction"] = @auction
     @car = Car.find(@auction.car_id)
-    if User.find_by(username: session[:username])
-      render :layout => 'bucketlist_user'
-    end
+    # if User.find_by(username: session[:username])
+    #   render :layout => 'bucketlist_user'
+    # end
   end
 
   def new

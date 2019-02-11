@@ -12,7 +12,7 @@
   <li>Model: <%= @car.model %></li><br>
   <li>Color: <%= @car.color %></li><br>
   <li>Year: <%= @car.year %></li><br>
-  <li>Mileage: <%= @car.mileage %></li><br>
+  <li>Mileage: <%= number_with_delimiter(@car.mileage) %></li><br>
 </ul><br>
 
 <p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>

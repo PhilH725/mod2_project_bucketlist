@@ -1,8 +1,8 @@
 
 class UsersController < ApplicationController
 
-  layout 'bucketlist_nonuser'
-
+  layout 'bucketlist_header'
+  
   before_action :find_params, only: [:show, :destroy, :cars]
 
   def index

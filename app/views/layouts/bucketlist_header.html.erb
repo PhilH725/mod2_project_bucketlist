@@ -11,8 +11,9 @@
 
   <body>
     <h1 id="site_header">~ Bucketlist ~</h1>
-<%= render 'shared/header_logged' if (user_logged) %>
-<%= render 'shared/header' if !(user_logged) %>
+
+    <%= render 'shared/header_logged' if (logged_user) %>
+    <%= render 'shared/header' if !(logged_user) %>
 
     <%= yield %>
   </body>

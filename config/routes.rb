@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   # root '/login'
 
-  get '/login' => 'sessions#new'
+  get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create'
-  get '/logout' => 'application#logout'
+  get '/logout' => 'application#logout', as: 'logout'
   get '/verify' => 'application#verify'
   post '/logout' => 'sessions#destroy'
 

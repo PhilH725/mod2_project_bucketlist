@@ -7,7 +7,7 @@ class AuctionsController < ApplicationController
 
   def index
     @auctions = Auction.all
-    byebug
+    # byebug
   end
 
   def show
@@ -15,27 +15,24 @@ class AuctionsController < ApplicationController
   end
 
   def new
-    @auction = Auction.new
-    # @listing.car = Car.new
+    if @user = User.find_by(username: session[:username])
+      @auction = Auction.new
+    else
+      redirect_to controller: 'sessions', action: 'new'
+    end
     # byebug
   end
 
   def create
     # byebug
-    @listing = Listing.new(title: params[:listing][:title],
-                           description: params[:listing][:description],
-                           user_id: params[:listing][:user_id])
+    @auction = Auction.new(title: params[:auction][:title],
+                           description: params[:auction][:description],
+                           starting_bid: params[:auction][:starting_bid],
+                           car_id: params[:auction][:car_id],
+                           seller_id: User.find_by(username: session[:username]).id)
 
-    @car = Car.new(make: params[:listing][:car][:make],
-                   model: params[:listing][:car][:model],
-                   color: params[:listing][:car][:color],
-                   year: params[:listing][:car][:year],
-                   mileage: params[:listing][:car][:mileage],
-                   listing_id: @listing.id)
-
-    if @car.valid? && @listing.valid?
-      @listing.save
-      redirect_to @listing
+    if @auction.save
+      redirect_to @auction
     else
       render :new
     end
@@ -46,18 +43,18 @@ class AuctionsController < ApplicationController
 
   def update
 
-    @listing.update(listing_params)
+    @auction.update(auction_params)
 
-    if @listing.save
-      redirect_to @listing
+    if @auction.save
+      redirect_to @auction
     else
       render :edit
     end
   end
 
   def destroy
-    @listing.destroy
-    redirect_to listings_path
+    @auction.destroy
+    redirect_to auctions_path
   end
 
   private

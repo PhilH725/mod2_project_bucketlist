@@ -8,13 +8,11 @@ class AuctionsController < ApplicationController
 
   def index
     @auctions = Auction.all
-<<<<<<< HEAD
-    #byebug
-=======
+
     if User.find_by(username: session[:username])
       render :layout => 'bucketlist_user'
     end
->>>>>>> 0606eeaacc58f6a370b686183a440e93423f0b04
+
   end
 
   def show

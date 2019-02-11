@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   #resources :cars
   resources :users
 
+  root 'application#hello'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'

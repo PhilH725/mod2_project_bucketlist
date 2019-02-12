@@ -8,13 +8,10 @@ class Bid < ApplicationRecord
   validate :get_top_bid
 
   def get_top_bid
-    # byebug
-    # @auction = Auction.find(:auction_id)
-    if :amount <= @auction.top_bid
-      errors.add('Bid must be greater than the current top bid')
+    @auction = Auction.find(self.auction_id)
+    if self.amount <= @auction.top_bid
+      errors.add(:bid, "Bid must be greater than the current top bid")
     end
   end
-
-  def
 
 end

@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
 
   get '/auctions/:id/bids/new', to: "bids#new", as: 'bid_new'
+  get '/auctions/:id/bids/create', to: "bids#create"
 
   resources :auctions
   resources :cars, only: [:new, :create]
   resources :users
-  resources :bids, only: [:new, :create]
+  resources :bids
 
   # root '/login'
 

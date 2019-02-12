@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :bids, foreign_key: "buyer_id"
   has_many :buyer_auctions, :class_name => "Auction", through: :bids
 
-  validates :username, presence: true, uniqueness: true, length: {greater_than 3}
+  validates :username, presence: true, uniqueness: true
   validates :password, presence: true
 
   has_secure_password
@@ -14,5 +14,7 @@ class User < ApplicationRecord
   def available_cars
     self.cars.select{|i| i.auctions.empty?}
   end
+
+
 
 end

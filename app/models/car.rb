@@ -5,6 +5,12 @@ class Car < ApplicationRecord
 
   has_many :auctions
 
+  validates :make, presence: true
+  validates :model, presence: true
+  validates :color, presence: true
+  validates :year, presence: true
+  validates :mileage, presence: true
+
   def display
     "#{self.make} - #{self.model}"
   end
@@ -14,7 +20,7 @@ class Car < ApplicationRecord
   end
 
   def random
-    
+
   end
 
 end

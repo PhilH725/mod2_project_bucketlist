@@ -13,11 +13,15 @@ class BidsController < ApplicationController
 
   def create
     # byebug
-    @auction = Auction.find(params[:bid][:auction_id])
-    @bid = Bid.create(amount: params[:bid][:amount],
+    # @auction = Auction.find(params[:bid][:auction_id])
+    @bid = Bid.new(amount: params[:bid][:amount],
                       buyer_id: params[:bid][:user_id],
                       auction_id: params[:bid][:auction_id])
-    redirect_to Auction.find(params[:bid][:auction_id])
+    @bid.save
+      redirect_to Auction.find(params[:bid][:auction_id])
+    # else
+    #   render '/auctions/#{params[:bid][:auction_id]}/bids/new'
+    # end
   end
 
   def index

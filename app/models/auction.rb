@@ -7,6 +7,10 @@ class Auction < ApplicationRecord
   has_many :bids
   has_many :buyers, through: :bids, class_name: "User", as: :buyer_auctions
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :starting_bid, numericality: {greater_than: 10}
+
   def all_auction_bids
     Bid.all.select{|i| i.auction_id == self.id}
   end

@@ -81,7 +81,7 @@ class AuctionsController < ApplicationController
   end
 
   def require_login
-    return head(:forbidden) unless session.include? :username
+    return head(:forbidden) unless session.include? :user_id
   end
 
 end

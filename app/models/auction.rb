@@ -23,4 +23,27 @@ class Auction < ApplicationRecord
     end
   end
 
+  def auction_winner
+    User.find(all_auction_bids.max_by{|i| i.amount}.buyer_id)
+  end
+
+  def end_auction
+    bids = all_auction_bids
+    if bids.empty?
+      self.destroy
+      nil
+    else
+      self.process_auction
+      self.auction_winner
+    end
+  end
+
+  def process_auction
+    car = Car.find(self.car_id)
+    car.user_id = self.auction_winner.id
+    car.save
+    self.destroy
+  end
+
+
 end

@@ -39,4 +39,6 @@
 
 <p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>
 
+<p><%= link_to "End Auction", end_path %></p>
+
 <%= link_to "Edit auction information", edit_auction_path(@auction) %>

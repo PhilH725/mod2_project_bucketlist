@@ -1,0 +1,8 @@
+
+<h1>Auction over!</h1>
+
+<% if @auction_status %>
+  <p>The winner of the auction is: <%= @auction_status.username %></p>
+<% else %>
+  <p>The auction ended with no bids</p>
+<% end %>

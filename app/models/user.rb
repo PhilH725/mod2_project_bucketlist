@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :bids, foreign_key: "buyer_id"
   has_many :buyer_auctions, :class_name => "Auction", through: :bids
 
+  validates :username, presence: true, uniqueness: true, length: {greater_than 3}
+  validates :password, presence: true
+
   has_secure_password
 
   def available_cars

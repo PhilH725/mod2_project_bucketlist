@@ -17,7 +17,7 @@
   <li>Mileage: <%= number_with_delimiter(@car.mileage) %></li><br>
 </ul>
 
-<h4><%= link_to "Place Bid", new_bid_path %></h4>
+<h4><%= link_to "Place Bid", bid_new_path %></h4>
 
 <p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>
 

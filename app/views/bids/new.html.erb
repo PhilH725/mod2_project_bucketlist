@@ -8,5 +8,5 @@ Current top bid: <%= @auction.top_bid %><br>
   <%= f.number_field :amount %>
   <%= f.hidden_field :user_id, :value => @user.id %>
   <%= f.hidden_field :auction_id, :value => @auction.id %>
-  <%= f.submit "Place Bet!" %>
+  <%= f.submit "Place Bid!" %>
 <% end %>

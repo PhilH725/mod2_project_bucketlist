@@ -5,7 +5,7 @@ class BidsController < ApplicationController
     # byebug
     @bid = Bid.new
     @user = logged_user
-    @auction = Auction.find(cookies[:view_auction].to_i)
+    @auction = Auction.find_by(id: params[:id])
     # byebug
   end
 

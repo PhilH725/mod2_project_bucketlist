@@ -15,6 +15,5 @@ class Bid < ApplicationRecord
     end
   end
 
-  def
 
 end

@@ -1,6 +1,8 @@
 
 class BidsController < ApplicationController
 
+  layout 'bucketlist_header'
+
   def new
     # byebug
     @bid = Bid.new

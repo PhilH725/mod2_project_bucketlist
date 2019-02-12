@@ -24,7 +24,7 @@ class AuctionsController < ApplicationController
   def new
     @user = logged_user
     @auction = Auction.new
-    render :layout => 'bucketlist_header'
+    #render :layout => 'bucketlist_header'
     # if logged_user
     #   @user = logged_user
     #   @auction = Auction.new
@@ -50,7 +50,7 @@ class AuctionsController < ApplicationController
   end
 
   def edit
-    render :layout => 'bucketlist_header'
+    #render :layout => 'bucketlist_header'
 
   end
 

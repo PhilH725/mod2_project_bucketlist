@@ -1,6 +1,8 @@
 
 class CarsController < ApplicationController
 
+  layout 'bucketlist_header'
+
   # def index
   # end
   #

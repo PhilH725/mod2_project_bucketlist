@@ -16,7 +16,7 @@ class Car < ApplicationRecord
   end
 
   def available
-    self.auctions.empty?
+    self.auctions.all?{|i| i.active==false}
   end
 
   def random

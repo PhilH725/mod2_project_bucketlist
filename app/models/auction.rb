@@ -30,7 +30,8 @@ class Auction < ApplicationRecord
   def end_auction
     bids = all_auction_bids
     if bids.empty?
-      self.destroy
+      self.active=false
+      self.save
       nil
     else
       self.process_auction
@@ -42,7 +43,8 @@ class Auction < ApplicationRecord
     car = Car.find(self.car_id)
     car.user_id = self.auction_winner.id
     car.save
-    self.destroy
+    self.active=false
+    self.save
   end
 
 

@@ -12,7 +12,19 @@ class User < ApplicationRecord
   has_secure_password
 
   def available_cars
-    self.cars.select{|i| i.auctions.empty?}
+    self.cars.select{|i| i.available}
+  end
+
+  def won_auctions
+    Auction.all.select{|i| i.active==false && i.auction_winner == self}
+  end
+
+  def completed_seller_auctions
+    Auction.all.select{|i| i.active==false && i.seller_id == self.id && i.all_auction_bids}
+  end
+
+  def user_history
+    won_auctions + completed_seller_auctions
   end
 
 

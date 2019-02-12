@@ -7,7 +7,7 @@ class AuctionsController < ApplicationController
   before_action :require_login, only: [:new]
 
   def index
-    @auctions = Auction.all
+    @auctions = Auction.all.select{|i| i.active == true}
     # if User.find_by(username: session[:username])
     #   render :layout => 'bucketlist_user'
     # end

@@ -2,8 +2,8 @@
 class UsersController < ApplicationController
 
   layout 'bucketlist_header'
-  
-  before_action :find_params, only: [:show, :destroy, :cars]
+
+  before_action :find_user, only: [:show, :destroy, :cars]
 
   def index
     @users = User.all
@@ -23,11 +23,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-      if @user.save
-        redirect_to @user
-      else
-        render :new
-      end
+    if @user.save
+      redirect_to @user
+    else
+      render :new
+    end
   end
 
   # def edit
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   private
 
-  def find_params
+  def find_user
     @user = User.find(params[:id])
   end
 

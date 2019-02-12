@@ -10,11 +10,21 @@
   </head>
 
   <body>
-    <h1 id="site_header">~ Bucketlist ~</h1>
+    <div id="site_header">
+      Bucketlist
+    </div>
+    <div id="nav_menu">
+      <%= render 'shared/header_logged' if (logged_user) %>
+      <%= render 'shared/header' if !(logged_user) %>
+    </div>
 
-    <%= render 'shared/header_logged' if (logged_user) %>
-    <%= render 'shared/header' if !(logged_user) %>
+    <div id="main_body">
+      <%= yield %>
+    </div>
 
-    <%= yield %>
+    <div id="footer">
+      &copy; Table 7 Productions
+    </div>
+
   </body>
 </html>

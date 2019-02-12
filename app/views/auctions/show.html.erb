@@ -1,11 +1,29 @@
 
 <h1><%= @auction.title %></h1>
 
+
+<h3>Description</h3>
+<p><%= @auction.description %></p>
+
 <h3>Bid Amount: $<%= number_with_delimiter(@auction.top_bid) %></h3>
 
 <h3>Bids Made: <%= @auction.all_auction_bids.size %></h3>
 
-<p><%= @auction.description %></p>
+
+<table>
+  <tr>
+    <th>Bid Amount</th>
+    <th>Buyer</th>
+    <th>Time</th>
+  </tr>
+  <% @auction.all_auction_bids.each do |bid| %>
+  <tr>
+    <td><%= bid.amount %></td>
+    <td><%= bid.buyer.username %></td>
+    <td><%= bid.created_at %></td>
+  </tr>
+  <% end %>
+</table>
 
 <h3>Car information:</h3>
 

@@ -4,6 +4,7 @@ class CreateBids < ActiveRecord::Migration[5.2]
       t.integer :amount
       t.integer :auction_id
       t.integer :buyer_id
+      t.timestamps
     end
   end
 end

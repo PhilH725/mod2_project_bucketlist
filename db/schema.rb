@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2019_02_12_015244) do
     t.integer "amount"
     t.integer "auction_id"
     t.integer "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cars", force: :cascade do |t|
@@ -35,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_02_12_015244) do
     t.integer "year"
     t.integer "mileage"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

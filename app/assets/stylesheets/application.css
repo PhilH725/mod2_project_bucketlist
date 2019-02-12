@@ -73,6 +73,22 @@ table, th, td {
     padding: 10px;
    }
 
+   #login_main {
+     background-color: darkblue;
+     color: white;
+     width: 300px;
+     height: auto;
+     margin: auto;
+     margin-top: 100px;
+     padding: 20px;
+   }
+
+   #login_code {
+     background-color: darkblue;
+     text-align: center;
+     font-size: 1.25em;
+   }
+
    #logged_user {
      float: right;
      padding-right: 30px;

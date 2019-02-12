@@ -1,6 +1,8 @@
 
 class SessionsController < ApplicationController
 
+  layout 'session_layout'
+
   def new
     # @user = User.new
   end

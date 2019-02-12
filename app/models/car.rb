@@ -19,8 +19,4 @@ class Car < ApplicationRecord
     self.auctions.all?{|i| i.active==false}
   end
 
-  def random
-
-  end
-
 end

@@ -15,6 +15,14 @@ class User < ApplicationRecord
     self.cars.select{|i| i.available}
   end
 
+  def participated_auctions
+    Auction.all.select{|i| i.bids.map{|j| j.buyer_id}.include?(self.id)}
+  end
+
+  def active_buyer_auctions
+    self.participated_auctions.select{|i| i.active}
+  end
+
   def won_auctions
     Auction.all.select{|i| i.active==false && i.auction_winner == self}
   end
@@ -23,8 +31,12 @@ class User < ApplicationRecord
     Auction.all.select{|i| i.active==false && i.seller_id == self.id && i.all_auction_bids}
   end
 
+  def active_seller_auctions
+    self.seller_auctions.select{|i| i.active}
+  end
+
   def user_history
-    won_auctions + completed_seller_auctions
+    participated_auctions + completed_seller_auctions
   end
 
 

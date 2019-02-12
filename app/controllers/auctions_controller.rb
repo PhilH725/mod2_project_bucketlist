@@ -22,12 +22,16 @@ class AuctionsController < ApplicationController
   end
 
   def new
-    if @user = User.find_by(username: session[:username])
-      @auction = Auction.new
-      render :layout => 'bucketlist_user'
-    else
-      redirect_to controller: 'sessions', action: 'new'
-    end
+    @user = logged_user
+    @auction = Auction.new
+    render :layout => 'bucketlist_header'
+    # if logged_user
+    #   @user = logged_user
+    #   @auction = Auction.new
+    #   render :layout => 'bucketlist_user'
+    # else
+    #   redirect_to controller: 'sessions', action: 'new'
+    # end
   end
 
   def create
@@ -35,10 +39,10 @@ class AuctionsController < ApplicationController
                            description: params[:auction][:description],
                            starting_bid: params[:auction][:starting_bid],
                            car_id: params[:auction][:car_id],
-                           seller_id: User.find_by(username: session[:username]).id)
+                           seller_id: logged_user.id)
 
     if @auction.save
-      @car.active_auction = true
+      # @car.active_auction = true
       redirect_to @auction
     else
       render :new
@@ -46,9 +50,8 @@ class AuctionsController < ApplicationController
   end
 
   def edit
-    if @user = User.find_by(username: session[:username])
-      render :layout => 'bucketlist_user'
-    end
+    render :layout => 'bucketlist_header'
+
   end
 
   def update

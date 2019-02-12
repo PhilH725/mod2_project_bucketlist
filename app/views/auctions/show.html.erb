@@ -1,7 +1,9 @@
 
 <h1><%= @auction.title %></h1>
 
-<h3>Starting Bid: $<%= number_with_delimiter(@auction.starting_bid) %></h3>
+<h3>Bid Amount: $<%= number_with_delimiter(@auction.top_bid) %></h3>
+
+<h3>Bids Made: <%= @auction.all_auction_bids.size %></h3>
 
 <p><%= @auction.description %></p>
 

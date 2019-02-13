@@ -1,7 +1,6 @@
 
 
 <div id="login_code">
-<span>
   <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
     Username: <input name="username" type="text" id="username"><br>
     Password:  <input name="password" type="password" id="password"><br>
@@ -9,5 +8,4 @@
   <% end %>
   <br>
   <%= link_to "Create Account", new_user_path %>
-</span>
 </div>

@@ -23,7 +23,15 @@
 <h2>Feedback: </h2>
 
 <% if @auction.seller == logged_user %>
-   <% if %>Seller feedback
+  <% if !@auction.feedback_status %>
+    <%= form_tag ({controller: 'feedbacks', action: 'create', method: 'post'}) do %>
+      Rating: <input name="rating" type="number">
+      Feedback for <%= @auction.auction_winner.username %>: <input name="content" type="text">
+      <input type="hidden" name="reviewer_id" value="<%= logged_user.id %>">
+      <input type="hidden" name="feedback_id" value="<%= @auction.auction_winner.id %>">
+      <input type="submit" value='Leave Feedback'>
+    <% end %>
+  <% end %>
 <% else %>
   Buyer Feedback
 <% end %>

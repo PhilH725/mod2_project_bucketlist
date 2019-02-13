@@ -21,8 +21,8 @@
   background-attachment: fixed;
 }
 
- html * {
-   font-family: Arial, sans-serif;
+ html {
+   font-family: Open Sans, Times, Arial, sans-serif;
 }
 
 a {
@@ -38,11 +38,11 @@ th {
   background-color: darkblue;
   border: 1px solid black;
   color: white;
-  height: 30px;
+  padding: 0.5em
 }
 
 td {
-  padding-left: 1em;
+  padding: .5em 1em .5em 1em;
 }
 
 tr:nth-child(even) {
@@ -52,7 +52,8 @@ tr:nth-child(even) {
 table {
   border-collapse: collapse;
   border: 1px solid black;
-  width: 700px;
+  min-width: 700px;
+  max-width: 900px;
   color: white;
 }
 
@@ -61,8 +62,6 @@ table, th, td {
 }
 
  #site_header {
-
-
    font-size: 5em;
    font-style: italic;
    font-family: 'Permanent Marker', cursive;
@@ -72,7 +71,8 @@ table, th, td {
   }
 
   #nav_menu {
-    font-size: 1.5em;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 1.75em;
     background: rgba(0, 39, 97, 0.85);
     color: white;
     padding: 10px;
@@ -104,7 +104,7 @@ table, th, td {
    }
 
   #main_body {
-    max-width: 900px;
+    max-width: 960px;
     margin: auto;
     padding: 20px 20px 50px 50px;
     background-color: #2C2C2C;

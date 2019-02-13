@@ -36,7 +36,7 @@ class User < ApplicationRecord
   end
 
   def user_history
-    participated_auctions + completed_seller_auctions
+    participated_auctions + self.seller_auctions
   end
 
 

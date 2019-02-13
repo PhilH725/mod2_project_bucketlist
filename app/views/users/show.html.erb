@@ -11,7 +11,6 @@
   <% end %>
   </ul>
 
-
 <h4>Selling: </h4>
 <ul>
   <% @user.active_seller_auctions.each do |auction|%>
@@ -24,12 +23,34 @@
 
 <h4>My Auction History: </h4>
 
-<ul>
+<table>
+  <tr>
+    <th>Auction</th>
+    <th>Make/Model</th>
+    <th>Buyer/Seller</th>
+    <th>Price</th>
+    <th>Auction Status</th>
+  </tr>
   <% @user.user_history.each do |i| %>
-    <li><%= "#{i.title} - #{i.active}" %></li>
+  <tr>
+    <td><%= link_to i.title, auction_path(i) %></td>
+    <td><%= i.car.make %>/<%= i.car.model %></td>
+    <% if @user.seller_auctions.include?(i) %>
+      <td>Seller</td>
+    <% else %>
+      <td>Buyer</td>
+    <% end %>
+    <td><%= i.top_bid %></td>
+    <% if i.active %>
+      <td>Active (ends: )</td>
+    <% else %>
+      <td>Completed (<%= i.clean_datetime %>)</td>
+    <% end %>
+  </tr>
   <% end %>
-</ul>
+</table>
 
+<br><br>
 <%= form_tag user_path(@user), method:"DELETE" do %>
 <%= submit_tag "Delete User" %>
 <% end %>

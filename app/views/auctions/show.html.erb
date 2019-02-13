@@ -17,7 +17,7 @@
 
 <h3>Bid Amount: $<%= number_with_delimiter(@auction.top_bid) %></h3>
 
-<h3>Bids Made: <%= @auction.all_auction_bids.size %></h3>
+<h3>Bids Made: <%= @auction.count_bids %></h3>
 
 
 <table>

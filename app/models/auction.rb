@@ -19,6 +19,18 @@ class Auction < ApplicationRecord
     Bid.all.select{|i| i.auction_id == self.id}
   end
 
+  def count_bids
+    all_auction_bids.size
+  end
+
+  # def display_top_bidder
+  #   if !all_auction_bids.empty?
+  #     all_auction_bids.max_by{|i| i.amount}
+  #   else
+  #     "NA"
+  #   end
+  # end
+
   def top_bid
     if !all_auction_bids.empty?
       all_auction_bids.max_by{|i| i.amount}.amount
@@ -51,8 +63,8 @@ class Auction < ApplicationRecord
     self.save
   end
 
-  def clean_datetime
-    year, month, day = self.updated_at.to_s.split(' ')[0].split('-')[0..2]
+  def clean_datetime(dt)
+    year, month, day = dt.to_s.split(' ')[0].split('-')[0..2]
     "#{month}/#{day}/#{year}"
   end
 

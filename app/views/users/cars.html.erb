@@ -22,3 +22,9 @@
   </tr>
   <% end %>
 </table>
+
+<% @user.cars.each do |car| %>
+    <% car.images.each do |image| %>
+        <%= image_tag(rails_blob_path(image)) %>
+    <% end %>
+<% end %>

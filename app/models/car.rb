@@ -4,6 +4,7 @@ class Car < ApplicationRecord
   belongs_to :user
 
   has_many :auctions
+  has_many_attached :images
 
   validates :make, presence: true
   validates :model, presence: true

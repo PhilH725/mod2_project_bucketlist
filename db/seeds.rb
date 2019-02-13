@@ -23,3 +23,5 @@ e = Car.create(make: "Jeep", model: "Cherokee", color: "Blue", year: 1990, milea
 list1 = Auction.create(title: "Barely used Camry for sale!!!", description: "legit, only 5k miles", starting_bid: 14000, seller_id: kyle.id, car_id: a.id)
 list2 = Auction.create(title: "Buy a truck", description: "Good work truck", starting_bid: 8000, seller_id: phil.id, car_id: b.id)
 list3 = Auction.create(title: "Beretta for sale! (transmission not included)", description: "Great car as long as you want to go downhill.", starting_bid: 2500, seller_id: phil.id, car_id: c.id)
+
+fb1 = Feedback.create(rating: 1, content: "This guy sold me a Jeep with a broken axle!!", reviewer_id: phil.id, feedback_id: kyle.id)

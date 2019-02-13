@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   layout 'bucketlist_header'
 
-  before_action :find_user, only: [:show, :destroy, :cars, :auctions]
+  before_action :find_user, only: [:show, :destroy, :cars, :auctions, :feedbacks]
 
   def index
     @users = User.all
@@ -17,6 +17,9 @@ class UsersController < ApplicationController
   end
 
   def auctions
+  end
+
+  def feedbacks
   end
 
   def new

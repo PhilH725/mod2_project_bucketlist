@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_145950) do
+ActiveRecord::Schema.define(version: 2019_02_13_164138) do
 
   create_table "auctions", force: :cascade do |t|
     t.integer "seller_id"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2019_02_13_145950) do
     t.integer "year"
     t.integer "mileage"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.integer "reviewer_id"
+    t.integer "feedback_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

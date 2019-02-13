@@ -49,7 +49,7 @@
         <% else %>
           <td><%= "None" %></td>
         <% end %>
-        <td><%= "Auction ends: ..." %>
+        <td><%= "Auction ends: #{i.clean_datetime(i.end_time)}" %>
       </tr>
     <% end %>
   </table>

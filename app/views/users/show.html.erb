@@ -31,7 +31,7 @@
     <% if i.active %>
       <td><%= "Active (ends: #{i.clean_datetime(i.end_time)})" %></td>
     <% else %>
-      <td>Completed (<%= i.clean_datetime(i.created_at) %>)</td>
+      <td>Completed (<%= i.clean_datetime(i.end_time) %>)</td>
     <% end %>
   </tr>
   <% end %>

@@ -6,8 +6,8 @@ site-wide:
 
 tests at some point
 
-make a decision about how to handle auctions
-  -time based means we cant display it working
-  -arbitrarily ending has issues
-
 General revisions to front end layout
+
+fix up delete user
+
+user feedback

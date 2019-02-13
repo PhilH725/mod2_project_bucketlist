@@ -13,8 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+
+
  body {
-  background-color: darkgray;
+  background-image: url('/assets/background/wallpaper_chaser.jpg');
+  background-attachment: fixed;
 }
 
  html * {
@@ -61,16 +65,18 @@ table, th, td {
    font-size: 5em;
    font-style: italic;
    font-family: arial;
-   background-color: darkblue;
+
    color: white;
    padding: 30px;
+   background: rgba(0, 0, 0, 0.8);
   }
 
   #nav_menu {
     font-size: 1.75em;
-    background-color: black;
+    background: rgba(0, 47, 117, 0.8);;
     color: white;
     padding: 10px;
+    margin-bottom: 20px;
    }
 
    #login_main {
@@ -95,10 +101,11 @@ table, th, td {
    }
 
   #main_body {
-    margin-top: 20px;
+    max-width: 900px;
+    margin: auto;
     padding: 20px 20px 50px 50px;
-    background-color: white;
-    color: black;
+    background-color: #2C2C2C;
+    color: white;
   }
 
  #footer {

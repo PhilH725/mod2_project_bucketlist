@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_164138) do
+ActiveRecord::Schema.define(version: 2019_02_13_204321) do
 
   create_table "auctions", force: :cascade do |t|
     t.integer "seller_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_02_13_164138) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "feedbacks", force: :cascade do |t|

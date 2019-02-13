@@ -16,15 +16,17 @@
 
 <%= form_for @car do |f| %><br>
 <%= f.label :make %>
-<%= f.text_field :make %>
+<%= f.text_field :make %><br>
 <%= f.label :model %>
-<%= f.text_field :model %>
+<%= f.text_field :model %><br>
 <%= f.label :color %>
-<%= f.text_field :color %>
+<%= f.text_field :color %><br>
 <%= f.label :year %>
-<%= f.text_field :year %>
+<%= f.text_field :year %><br>
 <%= f.label :mileage %>
-<%= f.text_field :mileage %>
+<%= f.text_field :mileage %><br>
 <%= f.hidden_field :user_id, :value => @user.id %>
+<%= f.label :image %>
+<%= f.file_field :image %><br>
 <%= f.submit %>
 <% end %>

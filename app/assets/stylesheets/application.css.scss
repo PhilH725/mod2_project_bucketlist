@@ -46,13 +46,14 @@ td {
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #4C4C4C;
 }
 
 table {
   border-collapse: collapse;
   border: 1px solid black;
   width: 700px;
+  color: white;
 }
 
 table, th, td {
@@ -64,23 +65,25 @@ table, th, td {
 
    font-size: 5em;
    font-style: italic;
-   font-family: arial;
-
-   color: white;
-   padding: 30px;
-   background: rgba(0, 0, 0, 0.8);
+   font-family: 'Permanent Marker', cursive;
+   color: rgba(254, 52, 207, 1);
+   padding: 5px 5px 5px 40px;
+   background: rgba(0, 0, 0, 0.85);
   }
 
   #nav_menu {
-    font-size: 1.75em;
-    background: rgba(0, 47, 117, 0.8);;
+    font-size: 1.5em;
+    background: rgba(0, 39, 97, 0.85);
     color: white;
     padding: 10px;
     margin-bottom: 20px;
    }
 
    #login_main {
-     background-color: darkblue;
+     background-color: #2C2C2C;
+     border-style: solid;
+     border-width: 2px;
+     border-color: rgb(254, 52, 207);
      color: white;
      width: 300px;
      height: auto;
@@ -90,9 +93,9 @@ table, th, td {
    }
 
    #login_code {
-     background-color: darkblue;
+     background-color: #2C2C2C;
      text-align: center;
-     font-size: 1.25em;
+     font-size: 1em;
    }
 
    #logged_user {

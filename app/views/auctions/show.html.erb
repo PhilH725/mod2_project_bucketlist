@@ -7,9 +7,9 @@
 
 <h3>Auction Status: </h3>
 <% if @auction.active %>
-  <%= "Active - Ends: " %>
+  <%= "Active - Ends: #{@auction.clean_datetime(@auction.end_time)}" %>
 <% else %>
-  <%= "Auction ended #{@auction.clean_datetime}" %><br>
+  <%= "Auction ended #{@auction.clean_datetime(@auction.end_time)}" %><br>
   <% if !@auction.all_auction_bids.empty? %>
     Winner: <%= link_to @auction.auction_winner.username, user_path(@auction.auction_winner) %>
   <% end %>
@@ -53,6 +53,8 @@
 
 <p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>
 
-<p><%= link_to "End Auction", end_path %></p>
+<% if logged_user == @auction.seller %>
+  <%= link_to "Edit auction information", edit_auction_path(@auction) %>
+<% end %>
 
-<%= link_to "Edit auction information", edit_auction_path(@auction) %>
+<p><%= link_to "End Auction", end_path %> - (debug - for development only)</p>

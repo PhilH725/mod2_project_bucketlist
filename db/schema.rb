@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_02_13_145950) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
-    t.datetime "end_time", default: "2019-02-23 15:22:36"
+    t.datetime "end_time", default: "2019-02-23 15:33:34"
   end
 
   create_table "bids", force: :cascade do |t|

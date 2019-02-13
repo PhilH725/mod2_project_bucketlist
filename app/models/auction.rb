@@ -11,6 +11,10 @@ class Auction < ApplicationRecord
   validates :description, presence: true
   validates :starting_bid, numericality: {greater_than: 10}
 
+  def self.failed_auctions
+    Auction.all.select{|i| !i.active && i.all_auction_bids.empty?}
+  end
+
   def all_auction_bids
     Bid.all.select{|i| i.auction_id == self.id}
   end
@@ -45,6 +49,11 @@ class Auction < ApplicationRecord
     car.save
     self.active=false
     self.save
+  end
+
+  def clean_datetime
+    year, month, day = self.updated_at.to_s.split(' ')[0].split('-')[0..2]
+    "#{month}/#{day}/#{year}"
   end
 
 

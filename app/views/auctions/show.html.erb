@@ -5,6 +5,16 @@
 <h3>Description</h3>
 <p><%= @auction.description %></p>
 
+<h3>Auction Status: </h3>
+<% if @auction.active %>
+  <%= "Active - Ends: " %>
+<% else %>
+  <%= "Auction ended #{@auction.clean_datetime}" %><br>
+  <% if !@auction.all_auction_bids.empty? %>
+    Winner: <%= link_to @auction.auction_winner.username, user_path(@auction.auction_winner) %>
+  <% end %>
+<% end %>
+
 <h3>Bid Amount: $<%= number_with_delimiter(@auction.top_bid) %></h3>
 
 <h3>Bids Made: <%= @auction.all_auction_bids.size %></h3>
@@ -16,12 +26,16 @@
     <th>Buyer</th>
     <th>Time</th>
   </tr>
-  <% @auction.all_auction_bids.each do |bid| %>
-  <tr>
-    <td><%= bid.amount %></td>
-    <td><%= bid.buyer.username %></td>
-    <td><%= bid.created_at %></td>
-  </tr>
+  <% if !@auction.all_auction_bids.empty? %>
+    <% @auction.all_auction_bids.reverse.each do |bid| %>
+      <tr>
+        <td><%= bid.amount %></td>
+        <td><%= bid.buyer.username %></td>
+        <td><%= bid.clean_bid_time %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <%= "No bids made" %>
   <% end %>
 </table>
 

@@ -15,6 +15,11 @@
       Bucketlist
     </div>
 
+    <div id="nav_menu">
+      <%= render 'shared/header_logged' if (logged_user) %>
+      <%= render 'shared/header' if !(logged_user) %>
+    </div>
+
     <div id="login_main">
       <%= yield %>
     </div>

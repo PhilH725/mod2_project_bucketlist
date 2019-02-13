@@ -1,3 +1,7 @@
 
 
-<span><a <%= link_to "LOGIN", login_path %>&nbsp;&nbsp;&nbsp;<%= link_to "BROWSE AUCTIONS", auctions_path %></span>
+<span>
+  <%= link_to "CREATE ACCOUNT", new_user_path %>&nbsp;&nbsp;&nbsp;
+  <%= link_to "BROWSE AUCTIONS", auctions_path %>&nbsp;&nbsp;&nbsp;
+  </span><span class="log_user_link"><%= link_to "LOGIN", login_path %>
+</span>

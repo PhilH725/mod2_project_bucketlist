@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   get '/users/:id/cars' => 'users#cars', as: 'user_cars'
+  get '/users/:id/auctions' => 'users#auctions', as: 'user_auctions'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

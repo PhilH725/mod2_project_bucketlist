@@ -12,6 +12,7 @@ Auction.destroy_all
 
 phil = User.create(username: "Phil", password: 'p')
 kyle = User.create(username: "Kyle", password: 'k')
+artem = User.create(username: "Artem", password: 'a')
 
 a = Car.create(make: "Toyota", model: "Camry", color: "Gold", year: 2002, mileage: 5000, user_id: kyle.id)
 b = Car.create(make: "Ford", model: "F-150", color: "Blue", year: 2012, mileage: 105000, user_id: phil.id)

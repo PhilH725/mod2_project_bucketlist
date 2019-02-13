@@ -1,26 +1,13 @@
-<h1>User page:</h1>
-<h4>User: <%= @user.username %></h4>
+<h1>~My Profile~</h1>
+<h4>User: <%= @user.username %></h4><br>
 
-<h3>Active Auctions:</h3>
 
-<h4>Buying: </h4>
-  <ul>
-  <% @user.active_buyer_auctions.each do |i| %>
-    <%= link_to i.title, auction_path(i) %><br>
-      * <%= "#{i.car.make} - #{i.car.model}" %>
-  <% end %>
-  </ul>
+<h3><%= link_to "My Cars", user_cars_path %></h3>
 
-<h4>Selling: </h4>
-<ul>
-  <% @user.active_seller_auctions.each do |auction|%>
-  <%= link_to auction.title, auction_path(auction) %><br>
-    * <%= "#{auction.car.make} - #{auction.car.model}" %><br>
-  <% end %>
-</ul>
+<h3><%= link_to "My Auctions", user_auctions_path %></h3>
 
-<h4><%= link_to "My Cars", user_cars_path %></h4>
-
+<br>
+---------------------------------
 <h4>My Auction History: </h4>
 
 <table>
@@ -40,7 +27,7 @@
     <% else %>
       <td>Buyer</td>
     <% end %>
-    <td><%= i.top_bid %></td>
+    <td>$<%= number_with_delimiter(i.top_bid) %></td>
     <% if i.active %>
       <td>Active (ends: )</td>
     <% else %>

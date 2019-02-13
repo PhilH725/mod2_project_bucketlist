@@ -19,6 +19,18 @@ class Auction < ApplicationRecord
     Bid.all.select{|i| i.auction_id == self.id}
   end
 
+  def count_bids
+    all_auction_bids.size
+  end
+
+  # def display_top_bidder
+  #   if !all_auction_bids.empty?
+  #     all_auction_bids.max_by{|i| i.amount}
+  #   else
+  #     "NA"
+  #   end
+  # end
+
   def top_bid
     if !all_auction_bids.empty?
       all_auction_bids.max_by{|i| i.amount}.amount

@@ -1,0 +1,56 @@
+
+<h1>My Auctions</h1>
+
+<div id="active_buyer_auctions">
+  <h3>Buying: </h3>
+
+  <table>
+    <tr>
+      <th>Auction</th>
+      <th>Make/Model</th>
+      <th>Seller</th>
+      <th>Top Bid</th>
+      <th>Bids Made</th>
+      <th>Auction Status</th>
+    </tr>
+    <% @user.active_buyer_auctions.each do |i| %>
+      <tr>
+        <td><%= link_to i.title, auction_path(i) %></td>
+        <td><%= i.car.make %>/<%= i.car.model %></td>
+        <td><%= link_to i.seller.username, i.seller %>
+        <td><%= i.top_bid %></td>
+        <td><%= i.count_bids %></td>
+        <td><%= "Auction ends: ..." %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div id="active_seller_auctions">
+  <h4>Selling: </h4>
+
+  <table>
+    <tr>
+      <th>Auction</th>
+      <th>Make/Model</th>
+      <th>Top Bid</th>
+      <th>Bids Made</th>
+      <th>Leading Bidder</th>
+      <th>Auction Status</th>
+    </tr>
+    <% @user.active_seller_auctions.each do |i| %>
+      <tr>
+        <td><%= link_to i.title, auction_path(i) %></td>
+        <td><%= i.car.make %>/<%= i.car.model %></td>
+        <td><%= i.top_bid %></td>
+        <td><%= i.count_bids %></td>
+        <% if !i.all_auction_bids.empty? %>
+          <td><%= link_to i.auction_winner, i.auction_winner %></td>
+        <% else %>
+          <td><%= "None" %></td>
+        <% end %>
+        <td><%= "Auction ends: ..." %>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -3,7 +3,7 @@ class AuctionsController < ApplicationController
 
   layout 'bucketlist_header'
 
-  before_action :get_auction, only: [:edit, :show, :update, :destroy, :end]
+  before_action :get_auction, only: [:edit, :show, :update, :destroy, :end, :transactions]
   before_action :require_login, only: [:new]
 
   def index
@@ -67,7 +67,9 @@ class AuctionsController < ApplicationController
 
   def end
     @auction_status = @auction.end_auction
+  end
 
+  def transactions
   end
 
   def destroy

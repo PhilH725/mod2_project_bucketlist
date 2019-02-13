@@ -19,6 +19,7 @@
     <th>Buyer/Seller</th>
     <th>Price</th>
     <th>Auction Status</th>
+    <th>Transaction Page</th>
   </tr>
   <% @user.user_history.each do |i| %>
   <tr>
@@ -35,6 +36,7 @@
     <% else %>
       <td>Completed (<%= i.clean_datetime(i.end_time) %>)</td>
     <% end %>
+    <td><%= link_to "Details", auction_transaction_path(i) %></td>
   </tr>
   <% end %>
 </table>

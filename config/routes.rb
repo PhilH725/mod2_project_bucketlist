@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get '/users/:id/auctions' => 'users#auctions', as: 'user_auctions'
   get '/users/:id/feedbacks' => 'users#feedbacks', as: 'user_feedbacks'
 
+  get '/auctions/:id/transactions' => 'auctions#transactions', as: 'auction_transaction'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

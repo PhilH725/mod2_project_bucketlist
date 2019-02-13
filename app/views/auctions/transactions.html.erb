@@ -1,0 +1,29 @@
+
+<h1>Transaction Information</h1>
+
+<h2><%= @auction.title %></h2>
+
+<table>
+  <tr>
+    <th>Make/Model</th>
+    <th>Buyer</th>
+    <th>Seller</th>
+    <th>Final Amount</th>
+    <th>Auction End Date</th>
+  </tr>
+  <tr>
+    <td><%= @auction.car.make %>/<%= @auction.car.model %></td>
+    <td><%= link_to @auction.auction_winner.username, @auction.auction_winner %></td>
+    <td><%= link_to @auction.seller.username, @auction.seller %></td>
+    <td>$<%= number_with_delimiter(@auction.top_bid) %></td>
+    <td><%= @auction.clean_datetime(@auction.end_time) %></td>
+  </tr>
+</table>
+
+<h2>Feedback: </h2>
+
+<% if @auction.seller == logged_user %>
+   <% if %>Seller feedback
+<% else %>
+  Buyer Feedback
+<% end %>

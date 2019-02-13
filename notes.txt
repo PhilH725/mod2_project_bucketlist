@@ -8,5 +8,3 @@ tests at some point
 fix up delete user
 
 user feedback
-
-fix auction end_time

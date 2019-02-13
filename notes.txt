@@ -1,10 +1,12 @@
 
 to do:
 
-tests at some point
-
 General revisions to front end layout
+
+tests at some point
 
 fix up delete user
 
 user feedback
+
+fix auction end_time

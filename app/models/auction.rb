@@ -11,6 +11,13 @@ class Auction < ApplicationRecord
   validates :description, presence: true
   validates :starting_bid, numericality: {greater_than: 10}
 
+  after_create :set_end_time
+
+  def set_end_time
+    self.end_time = Time.now + 860000
+    self.save
+  end
+
   def self.failed_auctions
     Auction.all.select{|i| !i.active && i.all_auction_bids.empty?}
   end

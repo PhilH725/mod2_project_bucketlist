@@ -1,9 +1,6 @@
 
 to do:
 
-site-wide:
-  -add restriction to certain actions based on logged in status
-
 tests at some point
 
 General revisions to front end layout

@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :bids, foreign_key: "buyer_id"
   has_many :buyer_auctions, :class_name => "Auction", through: :bids
 
+  has_many :reviews, :class_name => "Feedback", foreign_key: "reviewer_id"
+  has_many :feedbacks, :class_name => "Feedback", foreign_key: "feedback_id"
+
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
 
@@ -36,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def user_history
-    participated_auctions + self.seller_auctions
+    won_auctions + self.seller_auctions
   end
 
 

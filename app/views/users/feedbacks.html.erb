@@ -1,0 +1,21 @@
+
+<h1><%= @user.username %>'s Feedback</h1>
+
+<h4>Feedback:</h4>
+
+<table>
+  <tr>
+    <th>Rating</th>
+    <th>Review</th>
+    <th>User</th>
+    <th>Time</th>
+  </tr>
+  <% @user.feedbacks.each do |i| %>
+  <tr>
+    <td><%= i.rating %></td>
+    <td><%= i.content %></td>
+    <td><%= link_to User.find(i.reviewer_id).username, User.find(i.reviewer_id) %></td>
+    <td><%= i.created_at %></td>
+  </tr>
+  <% end %>
+</table>

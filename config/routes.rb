@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :cars, only: [:new, :create]
   resources :users
   resources :bids
+  resources :feedbacks, only: [:new, :create, :show]
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/cars' => 'users#cars', as: 'user_cars'
   get '/users/:id/auctions' => 'users#auctions', as: 'user_auctions'
+  get '/users/:id/feedbacks' => 'users#feedbacks', as: 'user_feedbacks'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

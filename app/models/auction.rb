@@ -63,8 +63,8 @@ class Auction < ApplicationRecord
     self.save
   end
 
-  def clean_datetime
-    year, month, day = self.updated_at.to_s.split(' ')[0].split('-')[0..2]
+  def clean_datetime(dt)
+    year, month, day = dt.to_s.split(' ')[0].split('-')[0..2]
     "#{month}/#{day}/#{year}"
   end
 

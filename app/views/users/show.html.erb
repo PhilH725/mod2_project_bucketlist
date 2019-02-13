@@ -29,9 +29,9 @@
     <% end %>
     <td>$<%= number_with_delimiter(i.top_bid) %></td>
     <% if i.active %>
-      <td>Active (ends: )</td>
+      <td><%= "Active (ends: #{i.clean_datetime(i.end_time)})" %></td>
     <% else %>
-      <td>Completed (<%= i.clean_datetime %>)</td>
+      <td>Completed (<%= i.clean_datetime(i.created_at) %>)</td>
     <% end %>
   </tr>
   <% end %>

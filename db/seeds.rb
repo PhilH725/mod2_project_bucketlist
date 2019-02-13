@@ -19,9 +19,13 @@ b = Car.create(make: "Ford", model: "F-150", color: "Blue", year: 2012, mileage:
 c = Car.create(make: "Chevrolet", model: "Beretta", color: "Red", year: 1994, mileage: 200000, user_id: phil.id)
 d = Car.create(make: "Volkswagon", model: "Microbus", color: "Teal/Green", year: 1966, mileage: 220000, user_id: kyle.id)
 e = Car.create(make: "Jeep", model: "Cherokee", color: "Blue", year: 1990, mileage: 160000, user_id: phil.id)
+e = Car.create(make: "Chevrolet", model: "Celebrity", color: "Tan", year: 1991, mileage: 43000, user_id: kyle.id)
+
 
 list1 = Auction.create(title: "Barely used Camry for sale!!!", description: "legit, only 5k miles", starting_bid: 14000, seller_id: kyle.id, car_id: a.id)
 list2 = Auction.create(title: "Buy a truck", description: "Good work truck", starting_bid: 8000, seller_id: phil.id, car_id: b.id)
 list3 = Auction.create(title: "Beretta for sale! (transmission not included)", description: "Great car as long as you want to go downhill.", starting_bid: 2500, seller_id: phil.id, car_id: c.id)
+list4 = Auction.create(title: "Super chill Celebrity", description: "Salvage title. Car was in a tornado, but it was only minor damage. Runs great, but may need to tow it home because of the battery. Low miles.", starting_bid: 3500, seller_id: kyle.id, car_id: e.id)
+
 
 fb1 = Feedback.create(rating: 1, content: "This guy sold me a Jeep with a broken axle!!", reviewer_id: phil.id, feedback_id: kyle.id)

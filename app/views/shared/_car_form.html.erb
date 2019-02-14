@@ -25,8 +25,14 @@
 <%= f.text_field :year %><br>
 <%= f.label :mileage %>
 <%= f.text_field :mileage %><br>
-<%= f.label :images %>
-<%= f.file_field :images %><br>
+<%= f.file_field :images, multiple: true %><br>
+
+<%#  Main photo <input type="file" name='car[images][]'><br>
+<%#  Photo <input type="file" name='car[images][]'><br>
+<%#  Photo <input type="file" name='car[images][]'><br>
+<%#  Photo <input type="file" name='car[images][]'><br>
+<%#  Photo <input type="file" name='car[images][]'><br>%>
+<%# "Main photo "<%= f.file_field :images[] %><br> %>
 <%= f.hidden_field :user_id, :value => @user.id %>
 <%= f.submit %>
 <% end %>

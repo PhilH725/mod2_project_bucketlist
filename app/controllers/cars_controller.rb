@@ -12,12 +12,13 @@ class CarsController < ApplicationController
   def new
     @car = Car.new
     @user = logged_user
+    5.times { @car.images.build }
   end
   #
   def create
-
+    #byebug
     @car = Car.new(car_params)
-    @car.images.attach(params[:car][:images])
+    # @car.images.attach(params[:car][:images])
       if @car.save
         redirect_to user_cars_path(logged_user)
       else

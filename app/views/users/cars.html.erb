@@ -11,6 +11,7 @@
     <th>Color</th>
     <th>Year</th>
     <th>Mileage</th>
+    <th></th>
   </tr>
   <% @user.cars.each do |car| %>
   <tr>
@@ -19,12 +20,18 @@
     <td><%= car.color %></td>
     <td><%= car.year %></td>
     <td><%= car.mileage %></td>
+    <td><%= image_tag(rails_blob_path(car.images.first)) if car.images.first %></td>
   </tr>
   <% end %>
 </table>
 
-<% @user.cars.each do |car| %>
-    <% car.images.each do |image| %>
+
+ <% @user.cars.each do |car| %>
+     <% car.images.each do |image| %>
         <%= image_tag(rails_blob_path(image)) %>
-    <% end %>
-<% end %>
+     <% end %>
+ <% end %>
+<br>
+ <% @user.cars.each do |car| %>
+     <%= "car: #{car.model} num images: #{car.images.count}" %><br>
+ <% end %>

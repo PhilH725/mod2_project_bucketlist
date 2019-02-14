@@ -4,7 +4,3 @@ to do:
 General revisions to front end layout
 
 tests at some point
-
-fix up delete user
-
-user feedback

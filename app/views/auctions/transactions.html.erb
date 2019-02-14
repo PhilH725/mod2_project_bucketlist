@@ -20,18 +20,36 @@
   </tr>
 </table>
 
-<h2>Feedback: </h2>
+<h3>Feedback: </h3>
 
 <% if @auction.seller == logged_user %>
-  <% if !@auction.feedback_status %>
+  You <%= logged_user.username %> are the seller <br>
+  <% @review = logged_user.reviews.find{|i| i.auction_id = @auction.id} %>
+  <% if !@review %>
     <%= form_tag ({controller: 'feedbacks', action: 'create', method: 'post'}) do %>
       Rating: <input name="rating" type="number">
       Feedback for <%= @auction.auction_winner.username %>: <input name="content" type="text">
       <input type="hidden" name="reviewer_id" value="<%= logged_user.id %>">
       <input type="hidden" name="feedback_id" value="<%= @auction.auction_winner.id %>">
+      <input type="hidden" name="auction_id" value="<%= @auction.id %>"
       <input type="submit" value='Leave Feedback'>
     <% end %>
+  <% else %>
+    <%= @review.rating %> - <%= @review.content %>
   <% end %>
 <% else %>
-  Buyer Feedback
+  You <%= logged_user.username %> are the buyer <br>
+  <% @feedback = logged_user.reviews.find{|i| i.auction_id = @auction.id} %>
+  <% if !@feedback %>
+    <%= form_tag ({controller: 'feedbacks', action: 'create', method: 'post'}) do %>
+      Rating: <input name="rating" type="number">
+      Feedback for <%= @auction.seller.username %>: <input name="content" type="text">
+      <input type="hidden" name="reviewer_id" value="<%= logged_user.id %>">
+      <input type="hidden" name="feedback_id" value="<%= @auction.seller.id %>">
+      <input type="hidden" name="auction_id" value="<%= @auction.id %>">
+      <input type="submit" value="Leave Feedback">
+    <% end %>
+  <% else %>
+    <%= @feedback.rating %> - <%= @feedback.content %>
+  <% end %>
 <% end %>

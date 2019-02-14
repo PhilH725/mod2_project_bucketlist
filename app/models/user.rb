@@ -42,6 +42,10 @@ class User < ApplicationRecord
     won_auctions + self.seller_auctions
   end
 
+  def reviews
+    Feedback.all.select{|i| i.reviewer_id == self.id}
+  end
+
 
 
 end

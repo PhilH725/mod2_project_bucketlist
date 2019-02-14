@@ -36,12 +36,18 @@
     <% else %>
       <td>Completed (<%= i.clean_datetime(i.end_time) %>)</td>
     <% end %>
-    <td><%= link_to "Details", auction_transaction_path(i) %></td>
+    <% if !i.active %>
+      <td><%= link_to "Details", auction_transaction_path(i) %></td>
+    <% else %>
+      <td>-</td>
+    <% end %>
   </tr>
   <% end %>
 </table>
 
 <br><br>
-<%= form_tag user_path(@user), method:"DELETE" do %>
-<%= submit_tag "Delete User" %>
+<% if logged_user == @user %>
+  <%= form_tag user_path(@user), method:"DELETE" do %>
+  <%= submit_tag "Delete User" %>
+  <% end %>
 <% end %>

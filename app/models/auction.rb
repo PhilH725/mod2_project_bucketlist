@@ -7,6 +7,8 @@ class Auction < ApplicationRecord
   has_many :bids
   has_many :buyers, through: :bids, class_name: "User", as: :buyer_auctions
 
+  has_many :feedbacks
+
   validates :title, presence: true
   validates :description, presence: true
   validates :starting_bid, numericality: {greater_than: 10}

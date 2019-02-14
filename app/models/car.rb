@@ -14,7 +14,7 @@ class Car < ApplicationRecord
   validates :mileage, presence: true
 
   def display
-    "#{self.make} - #{self.model}"
+    "#{self.make} #{self.model}"
   end
 
   def available

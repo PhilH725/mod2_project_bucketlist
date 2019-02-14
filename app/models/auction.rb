@@ -32,14 +32,6 @@ class Auction < ApplicationRecord
     all_auction_bids.size
   end
 
-  # def display_top_bidder
-  #   if !all_auction_bids.empty?
-  #     all_auction_bids.max_by{|i| i.amount}
-  #   else
-  #     "NA"
-  #   end
-  # end
-
   def top_bid
     if !all_auction_bids.empty?
       all_auction_bids.max_by{|i| i.amount}.amount
@@ -73,7 +65,14 @@ class Auction < ApplicationRecord
   end
 
   def clean_datetime(dt)
-    year, month, day = dt.to_s.split(' ')[0].split('-')[0..2]
+    date, time = dt.to_s.split(' ')[0..1]
+    year, month, day = date.split('-')[0..2]
+    "#{month}/#{day}/#{year} - #{time}"
+  end
+
+
+  def display_end_date
+    year, month, day = self.end_time.to_s.split(' ')[0].split('-')[0..2]
     "#{month}/#{day}/#{year}"
   end
 

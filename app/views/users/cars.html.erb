@@ -1,26 +1,25 @@
 <h1><%= "#{@user.username}'s Cars" %></h1>
 
-<h3><%= link_to "Add Car to Garage", new_car_path %></h3>
-
-<h4>Cars:</h4>
+<div class="less_flashy_button">
+  <%= link_to "Add Car to Garage", new_car_path %>
+</div>
+<br><br>
 
 <table>
   <tr>
-    <th>Make</th>
-    <th>Model</th>
+    <th></th>
+    <th>Make and Model</th>
     <th>Color</th>
     <th>Year</th>
-    <th>Mileage</th>
-    <th></th>
+    <th>Mileage</th>    
   </tr>
   <% @user.cars.each do |car| %>
   <tr>
-    <td><%= car.make %></td>
-    <td><%= car.model %></td>
+    <td><%= (image_tag(car.avatar.variant(resize: "300x300"))) if car.avatar.attached? == true %></td>
+    <td><%= car.display %></td>
     <td><%= car.color %></td>
     <td><%= car.year %></td>
-    <td><%= car.mileage %></td>
-    <td><%= (image_tag(car.avatar.variant(resize: "300x300"))) if car.avatar.attached? == true %></td>
+    <td><%= number_with_delimiter(car.mileage) %></td>
   </tr>
   <% end %>
 </table>

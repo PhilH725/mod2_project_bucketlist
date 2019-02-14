@@ -12,35 +12,48 @@
     <th>Auction End Date</th>
   </tr>
   <tr>
-    <td><%= @auction.car.make %>/<%= @auction.car.model %></td>
+    <td><%= @auction.car.display %></td>
     <td><%= link_to @auction.auction_winner.username, @auction.auction_winner %></td>
     <td><%= link_to @auction.seller.username, @auction.seller %></td>
     <td>$<%= number_with_delimiter(@auction.top_bid) %></td>
-    <td><%= @auction.clean_datetime(@auction.end_time) %></td>
+    <td><%= @auction.display_end_date %></td>
   </tr>
 </table>
 
 <h3>Feedback: </h3>
 
 <% if @auction.seller == logged_user %>
-  You <%= logged_user.username %> are the seller <br>
-  <% @review = logged_user.reviews.find{|i| i.auction_id = @auction.id} %>
+
+  <% @review = logged_user.reviews.find{|i| i.auction_id == @auction.id} %>
   <% if !@review %>
     <%= form_tag ({controller: 'feedbacks', action: 'create', method: 'post'}) do %>
       Rating: <input name="rating" type="number">
       Feedback for <%= @auction.auction_winner.username %>: <input name="content" type="text">
       <input type="hidden" name="reviewer_id" value="<%= logged_user.id %>">
       <input type="hidden" name="feedback_id" value="<%= @auction.auction_winner.id %>">
-      <input type="hidden" name="auction_id" value="<%= @auction.id %>"
+      <input type="hidden" name="auction_id" value="<%= @auction.id %>">
       <input type="submit" value='Leave Feedback'>
     <% end %>
   <% else %>
-    <%= @review.rating %> - <%= @review.content %>
+  <table>
+    <tr>
+      <th>Rating</th>
+      <th>Review</th>
+      <th>Feedback For</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <td><%= @review.rating %></td>
+      <td><%= @review.content %></td>
+      <td><%= link_to User.find(@review.feedback_id).username, User.find(@review.feedback_id) %></td>
+      <td><%= @review.display_time %></td>
+    </tr>
+  </table>
   <% end %>
+
 <% else %>
-  You <%= logged_user.username %> are the buyer <br>
-  <% @feedback = logged_user.reviews.find{|i| i.auction_id = @auction.id} %>
-  <% if !@feedback %>
+  <% @review = logged_user.reviews.find{|i| i.auction_id == @auction.id} %>
+  <% if !@review %>
     <%= form_tag ({controller: 'feedbacks', action: 'create', method: 'post'}) do %>
       Rating: <input name="rating" type="number">
       Feedback for <%= @auction.seller.username %>: <input name="content" type="text">
@@ -50,6 +63,19 @@
       <input type="submit" value="Leave Feedback">
     <% end %>
   <% else %>
-    <%= @feedback.rating %> - <%= @feedback.content %>
+  <table>
+    <tr>
+      <th>Rating</th>
+      <th>Review</th>
+      <th>Feedback For</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <td><%= @review.rating %></td>
+      <td><%= @review.content %></td>
+      <td><%= link_to User.find(@review.feedback_id).username, User.find(@review.feedback_id) %></td>
+      <td><%= @review.display_time %></td>
+    </tr>
+  </table>
   <% end %>
 <% end %>

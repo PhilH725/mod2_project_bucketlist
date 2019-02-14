@@ -1,5 +1,5 @@
 <h3><%= link_to "Click Here to Add a Car to your Garage - You must have a car to auction a car!!", new_car_path %></h3><br>
-<h2>Auction a car</h2>
+<h2>List-a-Bucket</h2>
 <% if @auction.errors.any? %>
   <div id= "error_explanation">
     <h2>There were some errors:</h2>
@@ -11,14 +11,16 @@
   </div>
 <% end %>
 
+<h3>Auctions end automatically after 10 days</h3>
+
 <%= form_for @auction do |f| %>
   <%= f.label :title %><br>
-  <%= f.text_field :title %><br>
+  <%= f.text_field :title %><br><br>
   <%= f.label :description %><br>
-  <%= f.text_area :description %><br>
+  <%= f.text_area :description %><br><br>
   <%= f.label :starting_bid %><br>
   <%= f.number_field :starting_bid %><br><br>
-  <%= f.label :select_car %>
+  <%= f.label :select_car %><br>
   <%= f.collection_select :car_id, @user.available_cars, :id, :display, prompt:true %><br><br>
   <%= f.submit %>
 <% end %>

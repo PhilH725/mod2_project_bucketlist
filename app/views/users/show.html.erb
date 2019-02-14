@@ -1,16 +1,14 @@
-<h1>~My Profile~</h1>
-<h4>User: <%= @user.username %></h4><br>
+<h1><%= "#{@user.username}'s Profile" %></h1>
 
 
-<h3><%= link_to "My Cars", user_cars_path %></h3>
 
-<h3><%= link_to "My Auctions", user_auctions_path %></h3>
+<h3><%= link_to "#{@user.username}'s Cars", user_cars_path %></h3>
 
-<h3><%= link_to "My Feedback", user_feedbacks_path %></h3>
+<h3><%= link_to "#{@user.username}'s Active Auctions", user_auctions_path %></h3>
 
-<br>
----------------------------------
-<h4>My Auction History: </h4>
+<h3><%= link_to "#{@user.username}'s Feedback", user_feedbacks_path %></h3>
+
+<h3><%= "#{@user.username}'s Auction History:" %></h3>
 
 <table>
   <tr>
@@ -47,7 +45,8 @@
 
 <br><br>
 <% if logged_user == @user %>
-  <%= form_tag user_path(@user), method:"DELETE" do %>
-  <%= submit_tag "Delete User" %>
-  <% end %>
+<%= button_to "Delete", @episode, method: :delete, data: { confirm: "Permanently erase your account?" } %>
+  <%#  <%= form_tag user_path(@user), method:"DELETE" do %>
+  <%#  <%= submit_tag "Delete User" %>
+  <%#  <% end %>
 <% end %>

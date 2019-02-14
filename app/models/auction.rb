@@ -69,7 +69,14 @@ class Auction < ApplicationRecord
   end
 
   def clean_datetime(dt)
-    year, month, day = dt.to_s.split(' ')[0].split('-')[0..2]
+    date, time = dt.to_s.split(' ')[0..1]
+    year, month, day = date.split('-')[0..2]
+    "#{month}/#{day}/#{year} - #{time}"
+  end
+
+
+  def display_end_date
+    year, month, day = self.end_time.to_s.split(' ')[0].split('-')[0..2]
     "#{month}/#{day}/#{year}"
   end
 

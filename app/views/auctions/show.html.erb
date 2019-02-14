@@ -1,21 +1,24 @@
 
-<h1><%= @auction.title %></h1>
+<h2 class="listing_title"><%= @auction.title %></h2>
 
+<p class="auction_description"><%= @auction.description %></p>
 
-<h3>Description</h3>
-<p><%= @auction.description %></p>
+<div class="flashy_button">
+  <%= link_to "Place Bid", bid_new_path %>
+</div>
 
-<h3>Auction Status: </h3>
+<h3>This auction is
 <% if @auction.active %>
-  <%= "Active - Ends: #{@auction.clean_datetime(@auction.end_time)}" %>
+  <%= " ACTIVE and ends: #{@auction.clean_datetime(@auction.end_time)}" %>
 <% else %>
-  <%= "Auction ended #{@auction.clean_datetime(@auction.end_time)}" %><br>
+  <%= " COMPLETED as of: #{@auction.clean_datetime(@auction.end_time)}" %><br>
   <% if !@auction.all_auction_bids.empty? %>
     Winner: <%= link_to @auction.auction_winner.username, user_path(@auction.auction_winner) %>
   <% end %>
-<% end %>
+<% end %></h3>
 
 <h3>Bid Amount: $<%= number_with_delimiter(@auction.top_bid) %></h3>
+<br>
 
 <h3>Bids Made: <%= @auction.count_bids %></h3>
 
@@ -38,20 +41,26 @@
     <%= "No bids made" %>
   <% end %>
 </table>
+<br>
+<br>
 
-<h3>Car information:</h3>
+<h3>Car</h3>
 
-<ul>
-  <li>Make: <%= @car.make %></li><br>
-  <li>Model: <%= @car.model %></li><br>
-  <li>Color: <%= @car.color %></li><br>
-  <li>Year: <%= @car.year %></li><br>
-  <li>Mileage: <%= number_with_delimiter(@car.mileage) %></li><br>
-</ul>
+<table>
+  <tr>
+    <th>Make and Model</th>
+    <th>Color</th>
+    <th>Year</th>
+    <th>Mileage</th>
+  </tr>
+  <tr>
+    <td><%= @car.display %></td>
+    <td><%= @car.color %></td>
+    <td><%= @car.year %></td>
+    <td><%= number_with_delimiter(@car.mileage) %></td>
+  </tr>
+</table>
 
-<div class="flashy_button">
-  <%= link_to "Place Bid", bid_new_path %>
-</div>
 
 <p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>
 

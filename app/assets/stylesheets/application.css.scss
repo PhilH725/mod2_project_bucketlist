@@ -78,18 +78,74 @@ input[type=submit]:hover {
   padding: .5em 1em;
 }
 
-.margin_auto {
-  margin: auto;
-}
-
 .flashy_button:hover a:hover{
   color: white;
+}
+
+.less_flashy_button {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 1.75em;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  background-color: darkblue;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(255, 255, 255);
+}
+
+.less_flashy_button:hover {
+  background-color: rgba(254, 52, 207, 1);
+  color: black;
+  border-style: solid;
+  border-width: 2px;
+    border-color: rgb(0, 0, 0);
+}
+
+.less_flashy_button a {
+  display: block;
+  padding: .5em 1em;
+}
+
+.less_flashy_button:hover a:hover{
+  color: black;
+}
+
+.margin_auto {
+  margin: auto;
 }
 
 h1 {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
   color: rgba(254, 52, 207, 1);
   font-size: 3.5em;
+}
+
+h2  {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  color: white;
+  font-size: 2.0em;
+}
+
+.listing_title {
+  font-family: 'Open Sans';
+  font-style: oblique;
+  color: white;
+  font-size: 2.0em;
+  color: #1fcecb; /* Robin's Egg Blue */
+}
+
+.auction_description {
+  margin-left: 30px;
+  margin-bottom: 50px;
+}
+
+h3:hover a {
+  color: #1fcecb; /* Robin's Egg Blue */
 }
 
 a {

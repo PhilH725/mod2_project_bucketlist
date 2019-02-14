@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/auctions/:id/end', to: 'auctions#end', as: 'end'
 
   resources :auctions
-  resources :cars, only: [:new, :create]
+  resources :cars, only: [:new, :create, :show]
   resources :users
   resources :bids
   resources :feedbacks, only: [:new, :create, :show]

@@ -20,7 +20,7 @@
     <td><%= car.color %></td>
     <td><%= car.year %></td>
     <td><%= car.mileage %></td>
-    <td><%= image_tag(rails_blob_path(car.images.first)) if car.images.first %></td>
+    <td><%= (image_tag(car.avatar.variant(resize: "300x300"))) if car.avatar.attached? == true %></td>
   </tr>
   <% end %>
 </table>

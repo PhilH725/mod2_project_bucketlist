@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'auctions#index'
+
 
   get '/auctions/:id/bids/new', to: "bids#new", as: 'bid_new'
   get '/auctions/:id/bids/create', to: "bids#create"

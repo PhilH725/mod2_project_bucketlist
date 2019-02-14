@@ -23,9 +23,15 @@
     <% else %>
       <td>Buyer</td>
     <% end %>
-    <td>$<%= number_with_delimiter(i.top_bid) %></td>
-    <td><%= i.clean_datetime(i.end_time) %></td>
-    <td><%= link_to "Details", auction_transaction_path(i) %></td>
+    <% if !i.all_auction_bids.empty? %>
+      <td>$<%= number_with_delimiter(i.top_bid) %></td>
+      <td><%= i.clean_datetime(i.end_time) %></td>
+      <td><%= link_to "Details", auction_transaction_path(i) %></td>
+    <% else %>
+      <td><%= "No bids made" %></td>
+      <td><%= i.clean_datetime(i.end_time) %></td>
+      <td>-</td>
+    <% end %>
   </tr>
   <% end %>
 </table>

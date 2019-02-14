@@ -32,14 +32,6 @@ class Auction < ApplicationRecord
     all_auction_bids.size
   end
 
-  # def display_top_bidder
-  #   if !all_auction_bids.empty?
-  #     all_auction_bids.max_by{|i| i.amount}
-  #   else
-  #     "NA"
-  #   end
-  # end
-
   def top_bid
     if !all_auction_bids.empty?
       all_auction_bids.max_by{|i| i.amount}.amount
@@ -49,7 +41,11 @@ class Auction < ApplicationRecord
   end
 
   def auction_winner
-    User.find(all_auction_bids.max_by{|i| i.amount}.buyer_id)
+    if !self.active && !self.all_auction_bids.empty?
+      User.find(all_auction_bids.max_by{|i| i.amount}.buyer_id)
+    else
+      "No winner"
+    end
   end
 
   def end_auction

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/users/:id/cars' => 'users#cars', as: 'user_cars'
   get '/users/:id/auctions' => 'users#auctions', as: 'user_auctions'
   get '/users/:id/feedbacks' => 'users#feedbacks', as: 'user_feedbacks'
+  get 'users/:id/auction_histories' => 'users#auction_histories', as: 'user_auction_histories'
 
   get '/auctions/:id/transactions' => 'auctions#transactions', as: 'auction_transaction'
 

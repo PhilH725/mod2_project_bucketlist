@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   layout 'bucketlist_header'
 
-  before_action :find_user, only: [:show, :destroy, :cars, :auctions, :feedbacks]
+  before_action :find_user, only: [:show, :destroy, :cars, :auctions, :feedbacks, :auction_histories]
 
   def index
     @users = User.all
@@ -22,6 +22,9 @@ class UsersController < ApplicationController
   def feedbacks
   end
 
+  def auction_histories
+  end
+
   def new
     @user = User.new
   end
@@ -30,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user
+      redirect_to login_path
     else
       render :new
     end

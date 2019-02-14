@@ -1,14 +1,12 @@
 
-avatar:<br>
+
 <%= image_tag(@car.avatar.variant(resize: "300x300")) %><br>
 
 
 
 images:<br>
-<% if @car.images %>
+<% if @car.images.attached? == true  %>
     <% @car.images.each do |image| %>
        <%= image_tag(rails_blob_path(image)) %><br>
     <% end %>
   <% end %>
-
-<%#   Images <%= f.file_field :images, multiple: true %><br>

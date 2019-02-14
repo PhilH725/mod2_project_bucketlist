@@ -13,27 +13,21 @@
 
 </div>
 <% end %>
-<%= @user.username %>
 <%= form_for @car do |f| %><br>
-<%= f.label :make %>
-<%= f.text_field :make %><br>
-<%= f.label :model %>
-<%= f.text_field :model %><br>
-<%= f.label :color %>
-<%= f.text_field :color %><br>
-<%= f.label :year %>
-<%= f.text_field :year %><br>
-<%= f.label :mileage %>
-<%= f.text_field :mileage %><br>
-Avatar <%= f.file_field :avatar, multiple: false %><br>
-
-
-<%#  Main photo <input type="file" name='car[images][]'><br>
-<%#  Photo <input type="file" name='car[images][]'><br>
-<%#  Photo <input type="file" name='car[images][]'><br>
-<%#  Photo <input type="file" name='car[images][]'><br>
-<%#  Photo <input type="file" name='car[images][]'><br>%>
-<%# "Main photo "<%= f.file_field :images[] %><br> %>
+<%= f.label :make %><br>
+<%= f.text_field :make %><br><br>
+<%= f.label :model %><br>
+<%= f.text_field :model %><br><br>
+<%= f.label :color %><br>
+<%= f.text_field :color %><br><br>
+<%= f.label :year %><br>
+<%= f.text_field :year %><br><br>
+<%= f.label :mileage %><br>
+<%= f.text_field :mileage %><br><br>
+<%= f.label 'Thumbnail' %><br>
+<%= f.file_field :avatar, multiple: false %><br>
+<%= f.label 'Images' %><br><br>
+<%= f.file_field :images, multiple: true %><br>
 <%= f.hidden_field :user_id, :value => @user.id %>
 <%= f.submit %>
 <% end %>

@@ -21,6 +21,7 @@ class CarsController < ApplicationController
     #byebug
     @car = Car.new(car_params)
     # @car.images.attach(params[:car][:images])
+    #make seperate uploadings of avatar and images so the database doesnt get upset and powty
       if @car.save
         redirect_to car_path(@car)
       else

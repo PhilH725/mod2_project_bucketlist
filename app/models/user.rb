@@ -39,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def user_history
-    won_auctions + self.seller_auctions
+    won_auctions + self.completed_seller_auctions
   end
 
   def reviews

@@ -8,45 +8,10 @@
 
 <h3><%= link_to "#{@user.username}'s Feedback", user_feedbacks_path %></h3>
 
-<h3><%= "#{@user.username}'s Auction History:" %></h3>
+<h3><%= link_to "#{@user.username}'s Auction History", user_auction_histories_path %></h3>
 
-<table>
-  <tr>
-    <th>Auction</th>
-    <th>Make/Model</th>
-    <th>Buyer/Seller</th>
-    <th>Price</th>
-    <th>Auction Status</th>
-    <th>Transaction Page</th>
-  </tr>
-  <% @user.user_history.each do |i| %>
-  <tr>
-    <td><%= link_to i.title, auction_path(i) %></td>
-    <td><%= i.car.make %>/<%= i.car.model %></td>
-    <% if @user.seller_auctions.include?(i) %>
-      <td>Seller</td>
-    <% else %>
-      <td>Buyer</td>
-    <% end %>
-    <td>$<%= number_with_delimiter(i.top_bid) %></td>
-    <% if i.active %>
-      <td><%= "Active (ends: #{i.clean_datetime(i.end_time)})" %></td>
-    <% else %>
-      <td>Completed (<%= i.clean_datetime(i.end_time) %>)</td>
-    <% end %>
-    <% if !i.active %>
-      <td><%= link_to "Details", auction_transaction_path(i) %></td>
-    <% else %>
-      <td>-</td>
-    <% end %>
-  </tr>
-  <% end %>
-</table>
 
 <br><br>
 <% if logged_user == @user %>
 <%= button_to "Delete", @episode, method: :delete, data: { confirm: "Permanently erase your account?" } %>
-  <%#  <%= form_tag user_path(@user), method:"DELETE" do %>
-  <%#  <%= submit_tag "Delete User" %>
-  <%#  <% end %>
 <% end %>

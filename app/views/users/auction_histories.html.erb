@@ -1,0 +1,31 @@
+
+<h1>Auction History</h1>
+
+<aside>
+  <%= link_to "-click here-", user_auctions_path %> to view active auctions
+</aside><br>
+
+<table>
+  <tr>
+    <th>Auction</th>
+    <th>Make/Model</th>
+    <th>Buyer/Seller</th>
+    <th>Price</th>
+    <th>End Date</th>
+    <th>Transaction Page</th>
+  </tr>
+  <% @user.user_history.each do |i| %>
+  <tr>
+    <td><%= link_to i.title, auction_path(i) %></td>
+    <td><%= i.car.make %>/<%= i.car.model %></td>
+    <% if @user.seller_auctions.include?(i) %>
+      <td>Seller</td>
+    <% else %>
+      <td>Buyer</td>
+    <% end %>
+    <td>$<%= number_with_delimiter(i.top_bid) %></td>
+    <td><%= i.clean_datetime(i.end_time) %></td>
+    <td><%= link_to "Details", auction_transaction_path(i) %></td>
+  </tr>
+  <% end %>
+</table>

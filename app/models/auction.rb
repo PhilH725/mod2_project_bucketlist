@@ -47,11 +47,7 @@ class Auction < ApplicationRecord
   end
 
   def auction_winner
-    if !self.active && !self.all_auction_bids.empty?
-      User.find(all_auction_bids.max_by{|i| i.amount}.buyer_id)
-    else
-      "No winner"
-    end
+    User.find(all_auction_bids.max_by{|i| i.amount}.buyer_id)
   end
 
   def end_auction

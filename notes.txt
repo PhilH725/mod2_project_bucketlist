@@ -8,3 +8,5 @@ add average feedback rating method/implement it
 test all feedback/auction history stuff (all permutations)
 
 comments
+
+validations 

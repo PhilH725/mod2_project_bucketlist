@@ -46,6 +46,10 @@ class User < ApplicationRecord
     Feedback.all.select{|i| i.reviewer_id == self.id}
   end
 
+  def average_rating
+    (self.feedbacks.map{|i| i.rating}.inject{|i, x| i + x}.to_f / self.feedbacks.size).round(1)
+  end
+
 
 
 end

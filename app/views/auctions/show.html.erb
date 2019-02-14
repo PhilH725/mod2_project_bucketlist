@@ -62,10 +62,10 @@
 </table>
 
 
-<p>Seller: <%= link_to @auction.seller.username, @auction.seller %></p>
+<h3><%= link_to "Seller: #{@auction.seller.username}", @auction.seller %></h3>
 
 <% if logged_user == @auction.seller %>
-  <%= link_to "Edit auction information", edit_auction_path(@auction) %>
+  <h3><%= link_to "Edit auction information", edit_auction_path(@auction) %></h3>
 <% end %>
 
-<p><%= link_to "End Auction", end_path %> - (debug - for development only)</p>
+<h3><%= link_to "End Auction  - (debug - for development only)", end_path %></h3>

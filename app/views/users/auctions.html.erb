@@ -45,7 +45,7 @@
         <td>$<%= number_with_delimiter(i.top_bid) %></td>
         <td><%= i.count_bids %></td>
         <% if !i.all_auction_bids.empty? %>
-          <td><%= link_to i.auction_winner.username, i.auction_winner %></td>
+          <td><%= link_to i.top_bid.username, i.top_bid %></td>
         <% else %>
           <td><%= "None" %></td>
         <% end %>

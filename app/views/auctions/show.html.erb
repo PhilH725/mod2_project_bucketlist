@@ -23,24 +23,22 @@
 <h3>Bids Made: <%= @auction.count_bids %></h3>
 
 
-<table>
-  <tr>
-    <th>Bid Amount</th>
-    <th>Buyer</th>
-    <th>Time</th>
-  </tr>
-  <% if !@auction.all_auction_bids.empty? %>
-    <% @auction.all_auction_bids.reverse.each do |bid| %>
-      <tr>
-        <td><%= bid.amount %></td>
-        <td><%= bid.buyer.username %></td>
-        <td><%= bid.clean_bid_time %></td>
-      </tr>
-    <% end %>
-  <% else %>
-    <%= "No bids made" %>
-  <% end %>
-</table>
+<% if !@auction.all_auction_bids.empty? %>
+  <table>
+    <tr>
+      <th>Bid Amount</th>
+      <th>Buyer</th>
+      <th>Time</th>
+    </tr>
+      <% @auction.all_auction_bids.reverse.each do |bid| %>
+        <tr>
+          <td><%= bid.amount %></td>
+          <td><%= bid.buyer.username %></td>
+          <td><%= bid.clean_bid_time %></td>
+        </tr>
+      <% end %>
+  </table>
+<% end %>
 <br>
 <br>
 
@@ -67,5 +65,5 @@
 <% if logged_user == @auction.seller %>
   <h3><%= link_to "Edit auction information", edit_auction_path(@auction) %></h3>
 <% end %>
-
+<br><br><br>
 <h3><%= link_to "End Auction  - (debug - for development only)", end_path %></h3>

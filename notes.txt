@@ -1,6 +1,10 @@
 
 to do:
 
-General revisions to front end layout
-
 tests at some point
+
+add average feedback rating method/implement it
+
+test all feedback/auction history stuff (all permutations)
+
+comments

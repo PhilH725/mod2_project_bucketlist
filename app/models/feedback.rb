@@ -11,6 +11,7 @@ class Feedback < ApplicationRecord
                                                      only_integer: true }
 
   def display_time
+    #displays the created at time in a more readable manner
     year, month, day = self.created_at.to_s.split(' ')[0].split('-')[0..2]
     "#{month}/#{day}/#{year}"
   end

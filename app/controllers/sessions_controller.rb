@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash["notice"] = "Invalid logon"
+      render :new
     end
 
     # return redirect_to(controller: 'sessions', action: 'new') if !params[:username] || params[:username].empty? || !params[:password] || params[:password].empty?

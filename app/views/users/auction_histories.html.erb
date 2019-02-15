@@ -15,7 +15,7 @@
   <% @user.user_history.each do |i| %>
   <tr>
     <td><%= link_to i.title, auction_path(i) %></td>
-    <td><%= i.car.display %></td>
+    <td><%= link_to i.car.display, car_path(i.car) %></td>
     <% if @user.seller_auctions.include?(i) %>
       <td>Seller</td>
     <% else %>

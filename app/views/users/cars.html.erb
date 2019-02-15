@@ -15,8 +15,10 @@
   </tr>
   <% @user.cars.each do |car| %>
   <tr>
-    <td><%= link_to (image_tag(car.avatar.variant(resize: "300x300"))), car_path(car) if car.avatar.attached? == true %></td>
-    <td><%= car.display %></td>
+    
+    <td><%= (car.avatar.attached?) ? (link_to (image_tag(car.avatar.variant(resize: "300x300"))), car_path(car)) : image_tag('/assets/placeholders/towing.gif') %></td>
+
+    <td><%= link_to car.display, car_path(car) %></td>
     <td><%= car.color %></td>
     <td><%= car.year %></td>
     <td><%= number_with_delimiter(car.mileage) %></td>

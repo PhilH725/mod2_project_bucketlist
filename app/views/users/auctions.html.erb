@@ -16,7 +16,7 @@
     <% @user.active_buyer_auctions.each do |i| %>
       <tr>
         <td><%= link_to i.title, auction_path(i) %></td>
-        <td><%= i.car.display %></td>
+        <td><%= link_to i.car.display, car_path(i.car) %></td>
         <td><%= link_to i.seller.username, i.seller %>
         <td><%= i.top_bid %></td>
         <td><%= i.count_bids %></td>
@@ -41,7 +41,7 @@
     <% @user.active_seller_auctions.each do |i| %>
       <tr>
         <td><%= link_to i.title, auction_path(i) %></td>
-        <td><%= i.car.display %></td>
+        <td><%= link_to i.car.display, car_path(i.car) %></td>
         <td>$<%= number_with_delimiter(i.top_bid) %></td>
         <td><%= i.count_bids %></td>
         <% if !i.all_auction_bids.empty? %>

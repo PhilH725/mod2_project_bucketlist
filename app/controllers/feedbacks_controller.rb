@@ -8,7 +8,6 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    # byebug
     @feedback = Feedback.new(rating: params[:rating],
                              content: params[:content],
                              reviewer_id: params[:reviewer_id],
@@ -17,7 +16,7 @@ class FeedbacksController < ApplicationController
     if @feedback.save
       redirect_to auction_transaction_path(params[:auction_id])
     else
-      redirect_to user_feedbacks_path(auctions_path)
+      redirect_to auction_transaction_path(params[:auction_id])
     end
   end
 

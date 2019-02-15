@@ -27,7 +27,7 @@ f = Car.create(make: "Chevrolet", model: "Celebrity", color: "Tan", year: 1991, 
 list1 = Auction.create(title: "Barely used Camry for sale!!!", description: "legit, only 5k miles", starting_bid: 14000, seller_id: kyle.id, car_id: a.id)
 list2 = Auction.create(title: "Buy a truck", description: "Good work truck", starting_bid: 8000, seller_id: phil.id, car_id: b.id)
 list3 = Auction.create(title: "Chevy Beretta for sale! (transmission not included)", description: "Great car as long as you want to go downhill.", starting_bid: 2500, seller_id: phil.id, car_id: c.id)
-list4 = Auction.create(title: "Super chill Celebrity", description: "Salvage title. Car was in a tornado, but it was only minor damage. Runs great, but may need to tow it home because of the battery. Low miles.", starting_bid: 3500, seller_id: kyle.id, car_id: e.id)
+list4 = Auction.create(title: "Super chill Celebrity", description: "Salvage title. Car was in a tornado, but it was only minor damage. Runs great, but may need to tow it home because of the battery. Low miles.", starting_bid: 3500, seller_id: kyle.id, car_id: f.id)
 list5 = Auction.create(title: "Jeep for sale, all axels are definitely in tact.", description: "Don't mind the duct tape, it's purely for decoration.", starting_bid: 5000, seller_id: kyle.id, car_id: e.id)
 
 Bid.create(amount: 5500, auction_id: list5.id, buyer_id: phil.id)

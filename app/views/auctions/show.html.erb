@@ -3,9 +3,11 @@
 
 <p class="auction_description"><%= @auction.description %></p>
 
-<div class="flashy_button">
-  <%= link_to "Place Bid", bid_new_path %>
-</div>
+<% if @auction.active %>
+  <div class="flashy_button">
+    <%= link_to "Place Bid", bid_new_path %>
+  </div>
+<% end %>
 
 <h3>This auction is
 <% if @auction.active %>

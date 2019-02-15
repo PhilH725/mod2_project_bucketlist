@@ -1,0 +1,39 @@
+<% if @car.errors.any? %>
+  <div class="error_explanation">
+    <h2>
+      <%= pluralize(@car.errors.count, "error") %>
+      prohibited this car from being saved:
+    </h2>
+
+    <ul>
+<% @car.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+</ul>
+
+</div>
+<% end %>
+<%= form_for @car do |f| %><br>
+<%= f.label :make %><br>
+<%= f.text_field :make %><br><br>
+<%= f.label :model %><br>
+<%= f.text_field :model %><br><br>
+<%= f.label :color %><br>
+<%= f.text_field :color %><br><br>
+<%= f.label :year %><br>
+<%= f.text_field :year %><br><br>
+<%= f.label :mileage %><br>
+<%= f.text_field :mileage %><br><br>
+<%= f.label 'Thumbnail' %><br>
+<%= f.file_field :avatar, multiple: false %><br>
+<%= f.hidden_field :user_id, :value => @user.id %>
+<%= f.submit "Update"%>
+<% end %>
+
+
+<%= form_for @car do |f| %><br>
+<%= f.label 'Images' %><br>
+<%= f.file_field :images, multiple: true %><br>
+<%= f.hidden_field :user_id, :value => @user.id %>
+<%= f.submit "Add Pics"%>
+<% end %>

@@ -1,5 +1,4 @@
-
-
+<h1><%= "#{@car.user.username}'s #{@car.year} #{@car.display}" %></h1>
 <%= image_tag(@car.avatar.variant(resize: "300x300")) %><br>
 
 
@@ -7,6 +6,9 @@
 images:<br>
 <% if @car.images.attached? == true  %>
     <% @car.images.each do |image| %>
-       <%= image_tag(rails_blob_path(image)) %><br>
+
+       <%= image_tag(image.variant(resize: "400x400")) %><br>
     <% end %>
   <% end %>
+
+<h3><%= link_to "Edit this car", edit_car_path(@car) %></h3>

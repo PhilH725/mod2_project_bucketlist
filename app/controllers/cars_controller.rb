@@ -3,7 +3,7 @@ class CarsController < ApplicationController
 
   layout 'bucketlist_header'
 
-  before_action :get_car, only: [:show]
+  before_action :get_car, only: [:show, :edit, :update]
 
   # def index
   # end
@@ -29,11 +29,22 @@ class CarsController < ApplicationController
       end
   end
 
-  # def edit
-  # end
+  def edit
+    @user = logged_user
+  end
   #
-  # def update
-  # end
+  def update
+
+
+    @car.update(car_params)
+
+    if @car.save
+      redirect_to @car
+    else
+      render :edit
+    end
+
+  end
 
   # def destroy
   # end

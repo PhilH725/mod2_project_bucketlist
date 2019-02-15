@@ -18,7 +18,7 @@ class Auction < ApplicationRecord
 
   def set_end_time
     #method that runs after an auction creation that sets the end time to 10 days later
-    self.end_time = Time.now + 860000
+    self.end_time = Time.now + 860000 #(60 * 24 * 10)
     self.save
   end
 

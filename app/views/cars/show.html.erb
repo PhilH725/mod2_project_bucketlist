@@ -1,5 +1,5 @@
 <h1><%= "#{@car.user.username}'s #{@car.year} #{@car.display}" %></h1>
-<%= image_tag(@car.avatar.variant(resize: "300x300")) %><br>
+<%= (@car.avatar.attached?) ? (image_tag(@car.avatar.variant(resize: "300x300"))) : image_tag('/assets/placeholders/towing.gif') %><br>
 
 
 

@@ -18,6 +18,7 @@ images:<br>
     <% end %>
   <% end %>
 
-  </div>
-
-<h3><%= link_to "Edit this car", edit_car_path(@car) %></h3>
+</div>
+<% if logged_user.id == @car.user_id %>
+  <h3><%= link_to "Edit this car", edit_car_path(@car) %></h3>
+<% end %>

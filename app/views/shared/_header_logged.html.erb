@@ -1,9 +1,10 @@
 
 <span>
   <%= link_to "MY PROFILE", user_path(logged_user) %>&nbsp;&nbsp;&nbsp;
-  <%= link_to "MY AUCTIONS", user_auctions_path(logged_user) %>&nbsp;&nbsp;&nbsp;
   <%= link_to "MY CARS", user_cars_path(logged_user) %>&nbsp;&nbsp;&nbsp;
+  <%= link_to "MY AUCTIONS", user_auctions_path(logged_user) %>&nbsp;&nbsp;&nbsp;
   <%= link_to "MY FEEDBACK", user_feedbacks_path(logged_user) %>&nbsp;&nbsp;&nbsp;
+  <%= link_to "MY HISTORY", user_auction_histories_path(logged_user) %>&nbsp;&nbsp;&nbsp;
   <%= link_to "BROWSE AUCTIONS", auctions_path %>&nbsp;&nbsp;&nbsp;
   <%= link_to "LIST CAR", new_auction_path %>&nbsp;&nbsp;&nbsp;
 </span><span class="log_user_link"><%= link_to "Log out as #{logged_user.username}", logout_path, method: "DELETE" %>

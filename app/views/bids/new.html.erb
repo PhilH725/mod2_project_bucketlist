@@ -1,7 +1,7 @@
 
-<h1><%= @auction.title %></h1>
+<h2 class="listing_title"><%= @auction.title %></h2>
 
-Current top bid: <%= @auction.top_bid %><br>
+Current top bid: $<%= number_with_delimiter(@auction.top_bid) %><br>
 
 <%= form_for @bid do |f| %>
   <%= f.label :amount %>

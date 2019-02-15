@@ -44,17 +44,17 @@
 <br>
 <br>
 
-<h3>Car</h3>
-
 <table>
   <tr>
+    <th></th>
     <th>Make and Model</th>
     <th>Color</th>
     <th>Year</th>
     <th>Mileage</th>
   </tr>
   <tr>
-    <td><%= @car.display %></td>
+    <td><%= (@car.avatar.attached?) ? (link_to (image_tag(@car.avatar.variant(resize: "300x300"))), car_path(@car)) : image_tag('/assets/placeholders/towing.gif') %></td>
+    <td><%= link_to @car.display, car_path(@car) %></td>
     <td><%= @car.color %></td>
     <td><%= @car.year %></td>
     <td><%= number_with_delimiter(@car.mileage) %></td>

@@ -4,11 +4,20 @@
 
 
 images:<br>
+<div class="images clearfix">
+
+
 <% if @car.images.attached? == true  %>
     <% @car.images.each do |image| %>
 
-       <%= image_tag(image.variant(resize: "400x400")) %><br>
+
+
+       <%= image_tag(image.variant(resize: "400x400")) %>
+
+
     <% end %>
   <% end %>
+
+  </div>
 
 <h3><%= link_to "Edit this car", edit_car_path(@car) %></h3>

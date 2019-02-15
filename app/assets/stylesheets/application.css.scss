@@ -14,7 +14,11 @@
  *= require_self
  */
 
-
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
 
  body {
   background-image: url('/assets/background/wallpaper_chaser.jpg');
@@ -63,6 +67,12 @@ input[type=submit]:hover {
   border-style: solid;
   border-width: 2px;
   border-color: rgb(0, 0, 0);
+}
+
+.images img {
+  float: left;
+  width: 25%;
+  margin: 5px;
 }
 
 .flashy_button:hover {

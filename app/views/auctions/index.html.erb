@@ -6,3 +6,13 @@
     <li><%= link_to a.title, a %></li>
   <% end %>
 </ul>
+
+<table>
+  <% @auctions.each do |auction| %>
+  <tr>
+    <td><%= (auction.car.avatar.attached?) ? (link_to (image_tag(auction.car.avatar.variant(resize: "300x300"))), auction_path(auction)) : image_tag('/assets/placeholders/towing.gif') %></td>
+    <td><%= link_to auction.title, auction_path(auction) %></td>
+    <td>$<%= number_with_delimiter(auction.top_bid) %></td>
+  </tr>
+  <% end %>
+</table>

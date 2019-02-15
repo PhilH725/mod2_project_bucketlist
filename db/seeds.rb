@@ -32,6 +32,7 @@ j = Car.create(make: "Ford", model: "Pinto", color: "Yellow", year: 1975, mileag
 k = Car.create(make: "Mercedes", model: "SL550", color: "Silver", year: 2008, mileage: 80000, user_id: ross.id)
 l = Car.create(make: "Porsche", model: "911", color: "Red", year: 2006, mileage: 90000, user_id: matthew.id)
 m = Car.create(make: "Lambourghini", model: "Murcielago", color: "Black", year: 2010, mileage: 30000, user_id: matthew.id)
+n = Car.create(make: "AZNP", model: "Skoda 110R", color: "Gold", year: 1975, mileage: 135000, user_id: artem.id)
 
 
 list1 = Auction.create(title: "Barely used Camry for sale!!!", description: "legit, only 5k miles", starting_bid: 14000, seller_id: kyle.id, car_id: a.id)
@@ -39,27 +40,33 @@ list2 = Auction.create(title: "Buy a truck", description: "Good work truck", sta
 list3 = Auction.create(title: "Chevy Beretta for sale! (transmission not included)", description: "Great car as long as you want to go downhill.", starting_bid: 2500, seller_id: phil.id, car_id: c.id)
 list4 = Auction.create(title: "Super chill Celebrity", description: "Salvage title. Car was in a tornado, but it was only minor damage. Runs great, but may need to tow it home because of the battery. Low miles.", starting_bid: 3500, seller_id: kyle.id, car_id: f.id)
 list5 = Auction.create(title: "Jeep for sale, all axels are definitely in tact.", description: "Don't mind the duct tape, it's purely for decoration.", starting_bid: 5000, seller_id: kyle.id, car_id: e.id)
-list6 = Auction.create(title: "You won't believe what a great van this is!", description: "Look cool driving around or drive right through rivers with this marvel of engineering! (results from driving it into water not guaranteed.)", starting_bid: 55000, seller_id: artem.id, car_id: g.id)
+list6 = Auction.create(title: "You won't believe what a great van this is!", description: "Look cool driving around town or drive right through rivers with this marvel of engineering! (results from driving it into water not guaranteed.)", starting_bid: 55000, seller_id: artem.id, car_id: g.id)
 list7 = Auction.create(title: "Car salesmen hate me! Rare foreign car for sale!", description: "Amazing do it all sedan, you can't find cars like this in America normally! (most doors and seats included)", starting_bid: 40000, seller_id: artem.id, car_id: h.id)
 list8 = Auction.create(title: "Ferrari for sale! (kinda)", description: "I'm selling the Ferrari I've owned for a very long time... but only the wheels. Seriously, it's definitely mine, I didn't just steal the tires to sell them.", starting_bid: 20000, seller_id: matthew.id, car_id: i.id)
+list13 = Auction.create(title: "VW Microbus!", description: "Look fashionable and foil the bad guy's plot with this.", starting_bid: 60000, seller_id: kyle.id, car_id: d.id)
 list9 = Auction.create(title: "Classic car for sale.", description: "Pristine condition Pinto. Canary yellow paintjob with hydraulics and 28 inch rims. Perfect car, just don't get rear-ended.", starting_bid: 10000, seller_id: ben.id, car_id: j.id)
 list10 = Auction.create(title: "Buy a not-stolen Lamby!", description: "Good condition, low miles, totally legal. The car title is at the cleaners and will be included soon.", starting_bid: 40000, seller_id: matthew.id, car_id: m.id)
 list11 = Auction.create(title: "Get a Porsche!", description: "Totally legal car!", starting_bid: 50000, seller_id: matthew.id, car_id: l.id)
+list12 = Auction.create(title: "Electric sports car!", description: "Impress your friends with this great sporty car!", starting_bid: 45000, seller_id: artem.id, car_id: n.id)
 
 
 Bid.create(amount: 5500, auction_id: list5.id, buyer_id: phil.id)
 Bid.create(amount: 42000, auction_id: list11.id, buyer_id: ben.id)
 Bid.create(amount: 51000, auction_id: list10.id, buyer_id: kyle.id)
+Bid.create(amount: 46000, auction_id: list12.id, buyer_id: ross.id)
 
 list5.active = false
 list10.active = false
 list11.active = false
+list12.active = false
 list5.save
 list10.save
 list11.save
+list12.save
 
 
 fb1 = Feedback.create(rating: 1, content: "This guy sold me a Jeep with a broken axel!!", reviewer_id: phil.id, feedback_id: kyle.id, active_reviewer_id: phil.id, auction_id: list5.id)
 fb2 = Feedback.create(rating: 2, content: "He paid in monopoly money, so not great, but it did let me put hotels on light blue", reviewer_id: kyle.id, feedback_id: phil.id, active_reviewer_id: kyle.id, auction_id: list5.id)
-fb3 = Feedback.create(rating: 1, content: "This was actually a Honda Civic with a carboard cutout of a Porsche on top of it. ", reviewer_id: ben.id, feedback_id: matthew.id, active_reviewer_id: ben.id, auction_id: list10.id)
-fb4 = Feedback.create(rating: 1, content: "I got arrested for driving this stolen car. Not worth the jail time, man.", reviewer_id: kyle.id, feedback_id: matthew.id, active_reviewer_id: kyle.id, auction_id: list11.id)
+fb3 = Feedback.create(rating: 1, content: "I thought I was buying a Porsche, but it was actually a Honda Civic with a carboard cutout of a Porsche on top of it.", reviewer_id: ben.id, feedback_id: matthew.id, active_reviewer_id: ben.id, auction_id: list10.id)
+fb4 = Feedback.create(rating: 1, content: "I got arrested for driving the stolen Lamby this guy sold me. Not worth the jail time, man.", reviewer_id: kyle.id, feedback_id: matthew.id, active_reviewer_id: kyle.id, auction_id: list11.id)
+fb5 = Feedback.create(rating: 5, content: "I bought a sporty Skoda from Artem and I love it! He did use a computer generated insult to trash me when I picked it up, but still 5 stars!", reviewer_id: ross.id, feedback_id: artem.id, active_reviewer_id: ross.id, auction_id: list12.id)

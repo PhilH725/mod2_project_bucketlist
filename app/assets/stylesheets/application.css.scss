@@ -21,7 +21,7 @@
 }
 
  body {
-  background-image: url('/assets/background/wallpaper_chaser.jpg');
+  background-image: url(<%= assets_path 'wallpaper_chaser.jpg' %>);
   background-attachment: fixed;
 }
 

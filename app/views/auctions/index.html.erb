@@ -1,12 +1,6 @@
 
 <h1>Bucketlistings</h1>
 
-<ul>
-  <% @auctions.each do |a| %>
-    <li><%= link_to a.title, a %></li>
-  <% end %>
-</ul>
-
 <table>
   <% @auctions.each do |auction| %>
   <tr>

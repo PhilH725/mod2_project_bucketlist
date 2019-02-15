@@ -31,7 +31,8 @@ class User < ApplicationRecord
   end
 
   def completed_seller_auctions
-    Auction.all.select{|i| i.active==false && i.seller_id == self.id && i.all_auction_bids}
+    # Auction.all.select{|i| i.active==false && i.seller_id == self.id && i.all_auction_bids}
+    self.seller_auctions.select{|i| i.active == false && !i.all_auction_bids.empty?}
   end
 
   def active_seller_auctions
@@ -39,11 +40,15 @@ class User < ApplicationRecord
   end
 
   def user_history
-    won_auctions + self.completed_seller_auctions
+    self.won_auctions + self.completed_seller_auctions
   end
 
   def reviews
     Feedback.all.select{|i| i.reviewer_id == self.id}
+  end
+
+  def received_feedbacks
+    Feedback.all.select{|i| i.feedback_id == self.id}
   end
 
   def average_rating
